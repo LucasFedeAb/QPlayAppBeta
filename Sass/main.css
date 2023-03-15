@@ -1,0 +1,416 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Vars */
+/* Cierre Vars */
+/* Header */
+#navbar__inline {
+  align-content: center;
+}
+#navbar__inline .user__img {
+  border-radius: 100%;
+}
+#navbar__inline .link__index {
+  text-decoration: none;
+  font-weight: bold;
+}
+#navbar__inline .letra__q {
+  color: #e8af05;
+  letter-spacing: 1rem;
+}
+#navbar__inline .letra__p {
+  color: #007bff;
+}
+#navbar__inline .letra__l {
+  color: red;
+}
+#navbar__inline .letra__a {
+  color: #00b500;
+}
+#navbar__inline .letra__y {
+  color: #ffa700;
+}
+
+/* Footer */
+#footer {
+  width: 100%;
+  height: 40px;
+}
+#footer .bi-arrow-left {
+  width: 45px;
+  height: 40px;
+}
+#footer .bi-arrow-left .arrow__return:hover {
+  color: #cccccc;
+}
+
+/* Cierre Footer */
+/* Responsive */
+@media screen and (max-width: 767px) {
+  .logo {
+    width: 20%;
+  }
+  .link__categoria {
+    font-size: 0.8rem;
+  }
+  .tittle__index {
+    font-size: 2.5rem;
+  }
+  #button__index {
+    margin-top: 10%;
+  }
+  #navbar__inline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: end;
+  }
+  #answer-buttons-container {
+    grid-template-columns: 1fr;
+  }
+  .question {
+    padding: 10px;
+  }
+  input[type=button] {
+    margin-right: 5px;
+  }
+  #submit {
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+  #result {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .logo {
+    width: 10%;
+  }
+  .tittle__index {
+    font-size: 3rem;
+  }
+  #button__index {
+    margin-top: 5%;
+  }
+  /* login */
+  #card__login {
+    height: 500px;
+  }
+  #categorias {
+    width: 100%;
+    height: 88vh;
+    /* background-color: aquamarine; */
+  }
+  .container__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    align-content: center;
+    justify-items: center;
+    padding: 5% 10% 5% 10%;
+    gap: 10%;
+  }
+}
+/* fin Responsive  */
+/* Index */
+html {
+  font-family: sans-serif;
+}
+
+#body__index {
+  width: 100%;
+  height: 100vh;
+  max-height: 1500px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  background: url(../Image/Background/bg-index.jpg) no-repeat center;
+  background-size: cover;
+  box-shadow: 0.5;
+  text-align: center;
+}
+
+#logo__animate {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.img__logo__index {
+  width: 100%;
+  max-width: 400px;
+}
+
+#name__GameApp {
+  padding-bottom: 5%;
+}
+#name__GameApp .tittle__index {
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}
+#name__GameApp .tittle__index .span__nameGame {
+  display: inline-block;
+  text-shadow: 1px 1px 0;
+  transition: transform 0.5s ease-in-out;
+  letter-spacing: 0.1rem;
+}
+#name__GameApp .tittle__index .span__nameGame.letra__q {
+  color: #e8af05;
+  letter-spacing: 1.5rem;
+}
+#name__GameApp .tittle__index .span__nameGame.letra__p {
+  color: #007bff;
+}
+#name__GameApp .tittle__index .span__nameGame.letra__l {
+  color: #ff0000;
+}
+#name__GameApp .tittle__index .span__nameGame.letra__a {
+  color: #00b500;
+}
+#name__GameApp .tittle__index .span__nameGame.letra__y {
+  color: #ffa700;
+}
+#name__GameApp .tittle__index .span__nameGame:hover {
+  transform: rotateY(360deg);
+}
+#name__GameApp .tittle__index .span__nameGame:before {
+  content: attr(data-letter);
+  display: block;
+  /* color: yellow; */
+  text-shadow: none;
+  transform: translateZ(5px);
+}
+
+#button__index {
+  text-align: center;
+}
+#button__index .button__jugar {
+  width: 80%;
+  max-width: 300px;
+  padding: 2% 20% 2% 20%;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  background: #ff8000;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: white;
+  letter-spacing: 0.3rem;
+}
+#button__index .button__jugar:hover {
+  background: #ffa700;
+  color: white;
+}
+#button__index .button__jugar:active {
+  text-decoration: none;
+  color: white;
+}
+
+/* Login */
+#body__login {
+  width: 100%;
+  height: 100vh;
+  padding: 1%;
+  background: url(../Image/Background/bg-login.jpg) no-repeat center;
+  background-size: cover;
+}
+#body__login #card__login {
+  width: 98%;
+  max-width: 500px;
+  height: -moz-max-content;
+  height: max-content;
+  margin: 0 auto;
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+#body__login #card__login #icon__login {
+  text-align: left;
+  width: 100%;
+}
+#body__login #card__login #icon__login .img-icon__login {
+  width: 15%;
+  height: 10%;
+}
+#body__login #card__login #icon__login .letra__q {
+  color: #e8af05;
+  letter-spacing: 1.5rem;
+}
+#body__login #card__login #icon__login .letra__p {
+  color: #007bff;
+}
+#body__login #card__login #icon__login .letra__l {
+  color: #ff0000;
+}
+#body__login #card__login #icon__login .letra__a {
+  color: #00b500;
+}
+#body__login #card__login #icon__login .letra__y {
+  color: #ffa700;
+}
+#body__login #card__login #icon__login .link__index {
+  text-decoration: none;
+}
+#body__login #card__login #form__login {
+  text-align: left;
+  /* &:focus{
+
+  } */
+}
+#body__login #card__login #form__login .title__login {
+  /* font-size: calc(1.325rem + .9vw); */
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+#body__login #card__login #form__login .label__login {
+  display: inline-block;
+  text-align: left;
+  margin-bottom: 5px;
+  color: rgba(128, 128, 128, 0.8588235294);
+}
+#body__login #card__login #form__login .input__mail,
+#body__login #card__login #form__login .input__password {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  border: whitesmoke;
+  background: whitesmoke;
+}
+#body__login #card__login #form__login .input__mail:focus,
+#body__login #card__login #form__login .input__password:focus {
+  outline: unset;
+}
+#body__login #card__login #form__login .input__mail:focus {
+  border-bottom: #007bff solid 3px;
+}
+#body__login #card__login #form__login .input__password:hover {
+  border-bottom: #007bff solid 3px;
+}
+#body__login #card__login #register {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 2%;
+}
+#body__login #card__login #register .newUser {
+  text-decoration: none;
+}
+#body__login #card__login #pass__remember {
+  margin: 15px 0px;
+}
+#body__login #card__login #pass__remember a {
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+#body__login #card__login #btn__ingresar .input__submit {
+  padding: 15px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin: 5% 0% 10% 0%;
+}
+#body__login #card__login #btn__ingresar .input__submit:hover {
+  background-color: #0062cc;
+}
+#body__login #card__login #register__redSocial {
+  padding: 1%;
+  text-align: center;
+  margin-bottom: 5%;
+}
+#body__login #card__login #register__redSocial .input__google {
+  width: 100%;
+  border-radius: 25px;
+  border: rgba(128, 128, 128, 0.368627451) solid 1px;
+  color: rgba(128, 128, 128, 0.8);
+  margin: 10px 0 10px 0;
+  background-color: white;
+  text-decoration: none;
+  padding: 5%;
+}
+#body__login #card__login #register__redSocial .input__google:hover {
+  color: rgba(128, 128, 128, 0.8588235294);
+}
+#body__login #card__login #register__redSocial .input__facebook {
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  /* background-color: #007bff; */
+  background-color: #0c91ed;
+  text-decoration: none;
+  padding: 5%;
+}
+#body__login #card__login #register__redSocial .input__facebook:hover {
+  color: white;
+}
+
+/* juegos/Categorias*/
+/* #categorias{ */
+/* width: 100%; */
+/* background: url(../Image/Background/bg-login.jpg) no-repeat center;
+background-size: cover; */
+/* background-color: aquamarine; */
+/* } */
+/* QuestionGame */
+/* Tutorial */
+/* Ayuda *//*# sourceMappingURL=main.css.map */
