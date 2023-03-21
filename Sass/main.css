@@ -61,6 +61,9 @@ table {
 #navbar__inline {
   align-content: center;
 }
+#navbar__inline .span__login {
+  font-size: 0.8rem;
+}
 #navbar__inline .span__login-toggler {
   font-size: 0.8rem;
 }
