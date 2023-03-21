@@ -2,6 +2,10 @@
 
 #navbar__inline{
     align-content:center;
+
+    .span__login-toggler{
+        font-size: 0.8rem;
+    }
     .user__img{
         border-radius: 100%;
     }
@@ -11,24 +15,24 @@
     }
     
     .letra__q{
-        color: #e8af05;
-        letter-spacing: 1rem;
+        color: $ColorLetraQ;
+        letter-spacing:1rem;
     }
     
     .letra__p{
-        color:#007bff;
+        color:$ColorLetraP;
     }
     
     .letra__l{
-        color: red;
+        color:$ColorLetraL;
     }
     
     .letra__a{
-        color:#00b500;
+        color:$ColorLetraA;
     }
     
     .letra__y{
-      color:#ffa700;  
+      color:$ColorLetraY;
     }
 }
 

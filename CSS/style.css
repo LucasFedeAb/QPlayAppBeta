@@ -11,7 +11,7 @@ html{
 #body__index{
     width: 100%;
     height: 100vh;
-    max-height: 1500px;
+    /* max-height: 1500px; */
     background: url(./Image/bg-index.jpg) no-repeat center;
     background-size: cover;
     box-shadow: 0.5;
@@ -63,8 +63,32 @@ html{
     text-align: center;
     padding-top: 25%;
 }
+/* Botón de inicio */
+.button__jugar {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    border-radius: 5rem;
+    background-color: #FF6B6B;
+    padding:  2% 30% 2% 30%;
+    transition: all 0.2s ease;
+}
 
-.button__jugar{
+.button__jugar:hover {
+    transform: scale(1.1);
+    background-color: #C9FFA5;
+    color: #000000;
+    box-shadow: 0 0 1rem #C9FFA5;
+}
+
+/* Pie de página */
+.footer__index {
+    margin-top: 10rem;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* .button__jugar{
     width: 80%;
     max-width: 300px;
     padding:  2% 30% 2% 30%;
@@ -81,7 +105,7 @@ html{
 .button__jugar:hover{
     
     background: #ffa700;
-}
+} */
 
 .link__jugar:active{
     text-decoration: none;
@@ -93,9 +117,10 @@ html{
 
 #body__juegos{
     width: 100%;
-    height: 90vh;
-    background: url(../Image/Background/bg-comoJugar.jpg) no-repeat;
-    background-size: cover;
+    height: 100vh;
+   /*  background: url(../Image/Background/bg-comoJugar.jpg) no-repeat center center; */
+   
+   /*  background-size: cover; */
     padding-bottom:5%;
 }
 
@@ -116,7 +141,7 @@ h3{
     color: #fff;
 }
 
-.timer {
+/* .timer {
     
     text-align: center;
     max-width: 500px;
@@ -137,14 +162,14 @@ h3{
     content: ":";
     margin-left: 5px;
     margin-right: 5px;
-}
+} */
 
 
 
 
 /* Estilos para las preguntas */
 
-#playRoom .quiz-container{
+#playRoom #quiz-container{
     
     display: flex;
     flex-direction: column;
@@ -154,7 +179,7 @@ h3{
     
 }
 
-.quiz-container {
+#quiz-container {
     margin: 0 auto;
     text-align: center;
 }
@@ -219,8 +244,13 @@ h3{
 }
 
 .answer-button:hover {
-    background-color: #edca03;
-    box-shadow: #e8af05 1px 1px 25px 1px;
+    background-color:  #f9f9f9f1;
+    /* box-shadow: #e8af05 1px 1px 25px 1px; */
+    transition: all 0.3s;
+}
+.answer-button:active {
+    background-color:  #f9f9f9f1;
+    /* box-shadow: #e8af05 1px 1px 25px 1px; */
     transition: all 0.3s;
 }
 
@@ -323,6 +353,15 @@ h3{
     color: #cccccc;
 }
 
+.img__icon__foot{
+    width: 80px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    margin-bottom: 2px;
+}
 /* .container-return-juegos{
     width: 45px;
     height: 40px;

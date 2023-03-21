@@ -68,13 +68,14 @@ function checkAnswer(selectedAnswer) {
     let textAlert = document.querySelector(".alert__msg");
     
     if (selectedAnswer === quizData[currentQuestion].correctAnswer) {
+
         btn.classList.add("correct");
         textAlert.classList.add("textCorrect");
         getScore= getScore+10;
         document.querySelector(".alert__msg").innerText = `Correcto`;
         document.querySelector(".score").innerText = `Score: ${getScore}`;
         
-    } else {
+    } else {    
         btn.classList.add("incorrect");
         textAlert.classList.add("textIncorrect");
         document.querySelector(".alert__msg").innerText = `Incorrecto`;
@@ -93,7 +94,7 @@ function checkAnswer(selectedAnswer) {
         btn.classList.remove("correct");
         btn.classList.remove("incorrect");
         textAlert.classList.remove("textCorrect");
-        textAlert.classList.add("textIncorrect");
+        textAlert.classList.remove("textIncorrect");
         document.querySelector(".alert__msg").innerText = ` `;
         document.querySelector(`.btn${quizData[currentQuestion].correctAnswer}`).classList.remove("correct");
         // pasar a la siguiente pregunta o mostrar el puntaje final
@@ -114,7 +115,7 @@ function checkAnswer(selectedAnswer) {
 function showQuestion() {
     // restablecer el temporizador
     clearInterval(timer);
-    document.getElementById("timer").innerText = 20;
+    document.getElementById("timer").innerText = 10;
 
     // mostrar la pregunta y las respuestas posibles
     document.querySelector(".category").innerText = quizData[currentQuestion].category;
@@ -167,7 +168,7 @@ function startTimer() {
         }
 
         // actualizar la visualización del temporizador
-        document.getElementById("timer").innerText = time;
+        document.querySelector("#timer").innerText = time;
         time--;
     }, 1000);
 }
