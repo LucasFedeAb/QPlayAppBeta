@@ -29,13 +29,12 @@
       console.log("Encoded JWT ID token: " + response.credential);
 
       // Get user profile information
-      const profile = response.profileObj;
+      /* const profile = response.profileObj;
       const { name, email, imageUrl } = profile;
       console.log(`User name: ${name}`);
       console.log(`User email: ${email}`);
-      console.log(`User profile image URL: ${imageUrl}`);
+      console.log(`User profile image URL: ${imageUrl}`); */
     }
-
     window.onload = function () {
       google.accounts.id.initialize({
         client_id: "918956489588-4fdk4fqap082a44rm5n7hdkhh109dng8.apps.googleusercontent.com",
