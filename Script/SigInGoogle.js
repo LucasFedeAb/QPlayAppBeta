@@ -12,8 +12,3 @@ function signOut() {
       console.log('User signed out.');
     });
 } */
-
-
-gapi.load('auth2', function() {
-    gapi.auth2.init();
-})
