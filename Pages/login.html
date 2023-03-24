@@ -9,6 +9,8 @@
   <!-- CSS bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <meta name="google-signin-client_id" content="918956489588-4fdk4fqap082a44rm5n7hdkhh109dng8.apps.googleusercontent.com">
+
   <!-- CSS propio -->
   <!-- CSS propio -->
   <!-- <link rel="stylesheet" type="text/css" href="../style.css"> -->
@@ -18,10 +20,34 @@
 </head>
 
 <body>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script>
+    function handleCredentialResponse(response) {
+      console.log("Encoded JWT ID token: " + response.credential);
+    }
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: "918956489588-4fdk4fqap082a44rm5n7hdkhh109dng8.apps.googleusercontent.com", 
+        context:"signin",
+        ux_mode:"popup",
+        login_uri:"https://qplay-beta.vercel.app/Pages/juegos.html",
+        auto_prompt:"false",
+        callback: handleCredentialResponse
+      });
+      google.accounts.id.renderButton(
+        document.getElementById("buttonDiv"),
+        { theme: "outline", size: "large", shape:"pill", text:"continue_with", logo_alignment:"center", width:"300",type:"standard"}  // customization attributes
+      );
+      google.accounts.id.prompt(); // also display the One Tap dialog
+    }
+  </script>
+
   <main id="body__login">
     <section id="card__login">
       <div id="icon__login">
-        <a class="link__index" href="../index.html"><img class="img-icon__login" src="../Image/IconApp/icon-bg-dark.png" alt="icon">
+        <a class="link__index" href="../index.html"><img class="img-icon__login" src="../Image/IconApp/icon-bg-dark.png"
+            alt="icon">
           <span class="span__login letra__p">P</span>
           <span class="span__login letra__l">L</span>
           <span class="span__login letra__a">A</span>
@@ -46,12 +72,10 @@
       <div id="btn__ingresar">
         <a href="./juegos.html"><input class="input__submit" type="submit" value="Ingresar"></a>
       </div>
-      <div id="register__redSocial">
 
-        <div class="container__google social__hover mb-5">
-          <a class="input__google register__google" href="https://www.google.com/intl/es/gmail/about/"><img
-              src="../Image/Social/sml-google-logo.svg" alt="google">Continuar con Google</a>
-        </div>
+      <div id="buttonDiv" class="align-items-center justify-content-center text-center d-flex p-2 m-3"></div>
+
+      <div id="register__redSocial">
 
         <div class="social__hover container__facebook">
           <a class="input__facebook register__facebook" href="https://www.facebook.com/"><img
@@ -67,6 +91,7 @@
       </div>
     </section>
   </main>
+
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
