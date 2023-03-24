@@ -49,6 +49,12 @@
       );
       google.accounts.id.prompt(); // also display the One Tap dialog
     }
+    function onSignIn(googleUser) {
+      // ...
+
+      // Redirigir al usuario a la página de juegos después de iniciar sesión con éxito
+      window.location.replace("https://qplay-beta.vercel.app/Pages/juegos.html");
+    }
   </script>
 
   <main id="body__login">
