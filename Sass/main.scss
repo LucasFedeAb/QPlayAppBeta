@@ -339,15 +339,50 @@ html {
 
 
 /* juegos/Categorias*/
+/* .title__categoria{
+    font-size: 5rem;
+    background: url(../Image/Background/abtracto9.jpg) no-repeat center;
+    background-size: cover;
+    text-align: center;
+    color: whitesmoke;
+} */
 
 #categorias{
     /* width: 100%; */
     background: url(../Image/Background/abtracto9.jpg) no-repeat center;
     background-size: cover;
+    
+    .title__categoria{
+        /* font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: 0.3rem; */
+        
+        .letra__q {
+            color: $ColorLetraQ;
+        }
+
+        .letra__p {
+            color: $ColorLetraP;
+        }
+
+        .letra__l {
+            color: $ColorLetraL;
+            
+        }
+
+        .letra__a {
+            color: $ColorLetraA;
+        }
+
+        .letra__y {
+            color: $ColorLetraY;
+        }
+
+    }
 
     .card{
-        background-color: whitesmoke;
         box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+        border-radius: 100%;
     }
 }
 

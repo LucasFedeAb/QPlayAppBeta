@@ -154,6 +154,11 @@ table {
   #result {
     font-size: 20px;
   }
+  .title__categoria {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.3rem;
+  }
 }
 @media screen and (min-width: 768px) {
   .logo {
@@ -167,6 +172,11 @@ table {
   }
   #button__index .buton__jugar {
     padding: 2% 20% 2% 20%;
+  }
+  .title__categoria {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5rem;
   }
   /* login */
   /* #card__login{
@@ -454,14 +464,41 @@ html {
 }
 
 /* juegos/Categorias*/
+/* .title__categoria{
+    font-size: 5rem;
+    background: url(../Image/Background/abtracto9.jpg) no-repeat center;
+    background-size: cover;
+    text-align: center;
+    color: whitesmoke;
+} */
 #categorias {
   /* width: 100%; */
   background: url(../Image/Background/abtracto9.jpg) no-repeat center;
   background-size: cover;
 }
+#categorias .title__categoria {
+  /* font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem; */
+}
+#categorias .title__categoria .letra__q {
+  color: #C9FFA5;
+}
+#categorias .title__categoria .letra__p {
+  color: #FFE766;
+}
+#categorias .title__categoria .letra__l {
+  color: #FF6B6B;
+}
+#categorias .title__categoria .letra__a {
+  color: #FFE766;
+}
+#categorias .title__categoria .letra__y {
+  color: #C9FFA5;
+}
 #categorias .card {
-  background-color: whitesmoke;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 100%;
 }
 
 /* QuestionGame */
