@@ -2,11 +2,12 @@
 @import './vars';
 @import './header';
 @import './footer';
+@import './slider';
 @import './responsive';
+
 
 // Mobile First
 // Estilos comunes para todas las resoluciones
-
 
 /* Index */
 
@@ -14,10 +15,9 @@ html {
     font-family: sans-serif;
 }
 
-.body__index {
+#body-index {
     width: 100%;
-    height: 100vh;
-    /* max-height: 1500px; */
+    height: 94vh;
     font-family: Arial, sans-serif;
     font-size: $base-font-size;
     background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
@@ -28,7 +28,7 @@ html {
 }
 
 // Logo
-#logo__animate {
+#logo-animate {
     display: flex;
     justify-content: center;
     margin-top: 40px;
@@ -53,7 +53,7 @@ html {
 
 // Nombre del juego
 
-#name__GameApp {
+#name-GameApp {
 
     .tittle__index {
         font-weight: 700;
@@ -67,6 +67,7 @@ html {
             transition: transform 0.5s ease-in-out;
             letter-spacing: 0.1rem;
             transform: rotate(-10deg);
+
             &.letra__q {
                 color: $ColorLetraQ;
                 letter-spacing: 1rem;
@@ -96,7 +97,6 @@ html {
             &:before {
                 content: attr(data-letter);
                 display: block;
-                /* color: yellow; */
                 text-shadow: none;
                 transform: translateZ(10px);
             }
@@ -105,9 +105,8 @@ html {
 }
 
 // Boton Jugar
-#button__index {
+#button-index {
     text-align: center;
-
     .button__jugar {
         color: #000000;
         font-size: 1.5rem;
@@ -135,228 +134,34 @@ html {
             color: #000000;
             box-shadow: 0 0 1rem #C9FFA5;
         }
-        
-
-        /* &:hover {
-            background: #ffa700;
-            color: white;
-        } */
-
-        /* &:active {
-            text-decoration: none;
-            color: white;
-        } */
-
     }
 }
 
-.footer__index {
-    /* margin-top: 10rem; */
+//Footer index
+#footer-index {
     color: $colorCopy;
-    /* font-size: 1rem; */
     font-family: 'Roboto', sans-serif;
 }
 
-
-/* Login */
-
-#body__login {
-    width: 100%;
-    height: 100vh;
-    padding: 1%;
-    background: url(../Image/Background/bg-login.jpg) no-repeat center;
-    background-size: cover;
-
-    #card__login {
-        width: 98%;
-        max-width: 500px;
-        height: 98vh;
-        margin: 0 auto;
-        background-color: whitesmoke;
-        /* box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2); */
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-
-        #icon__login {
-            text-align: left;
-            width: 100%;
-            font-size: 0.8rem;
-
-            .img-icon__login {
-                width: 10%;
-                height: 10%;
-            }
-
-            .letra__q {
-                color: $ColorLetraQ;
-                letter-spacing: 1.5rem;
-            }
-
-            .letra__p {
-                color: $ColorLetraP;
-            }
-
-            .letra__l {
-                color: $ColorLetraL;
-            }
-
-            .letra__a {
-                color: $ColorLetraA;
-            }
-
-            .letra__y {
-                color: $ColorLetraY;
-            }
-
-            .link__index {
-                text-decoration: none;
-            }
-        }
-
-        #form__login {
-            text-align: left;
-
-            .title__login {
-                /* font-size: calc(1.325rem + .9vw); */
-                font-size: 2rem;
-                margin-bottom: 20px;
-                text-align: center;
-            }
-
-            .label__login {
-                display: inline-block;
-                text-align: left;
-                margin-bottom: 5px;
-                color: #808080db;
-            }
-
-            .input__mail,
-            .input__password {
-                padding: 10px;
-                width: 100%;
-                margin-bottom: 20px;
-                border: whitesmoke;
-                background: whitesmoke;
-
-                &:focus {
-                    outline: unset;
-                }
-            }
-
-            /* &:focus{
-                
-            } */
-            .input__mail:focus {
-                border-bottom: #007bff solid 3px;
-            }
-
-            .input__password:hover {
-                border-bottom: #007bff solid 3px;
-            }
-
-        }
-
-
-        #register {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 2%;
-
-            .newUser {
-                text-decoration: none;
-            }
-        }
-
-        #pass__remember {
-            margin: 15px 0px;
-
-            & a {
-                text-decoration: none;
-                font-size: 0.8rem;
-            }
-        }
-
-        #btn__ingresar {
-            .input__submit {
-                padding: 15px 20px;
-                background-color: #007bff;
-                color: #fff;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: background-color 0.3s ease-in-out;
-                margin: 5% 0% 10% 0%;
-
-                &:hover {
-                    background-color: #0062cc;
-                }
-            }
-        }
-
-        #register__redSocial {
-            padding: 1%;
-            text-align: center;
-            margin-bottom: 5%;
-
-            .input__google {
-                width: 100%;
-                border-radius: 25px;
-                border: #8080805e solid 1px;
-                color: #808080cc;
-                margin: 10px 0 10px 0;
-                background-color: white;
-                text-decoration: none;
-                padding: 5%;
-
-                &:hover {
-                    color: #808080db;
-                }
-
-            }
-
-            .input__facebook {
-                width: 100%;
-                border: none;
-                border-radius: 25px;
-                color: white;
-                /* background-color: #007bff; */
-                background-color: #0c91ed;
-                text-decoration: none;
-                padding: 3% 10%;
-
-                &:hover {
-                    color: white;
-                }
-            }
-
-        }
-
-    }
-
-}
-
-
-/* juegos/Categorias*/
-/* .title__categoria{
-    font-size: 5rem;
-    background: url(../Image/Background/abtracto9.jpg) no-repeat center;
-    background-size: cover;
-    text-align: center;
-    color: whitesmoke;
-} */
+/* Categorys */
 
 #categorias{
-    /* width: 100%; */
-    background: url(../Image/Background/abtracto9.jpg) no-repeat center;
+    height: 100vh;
+    background: url(../Image/Background/abtracto9.jpg) center;
+    background-repeat: no-repeat;
     background-size: cover;
+    color: #fff;
+    line-height: 1.5;
+    font-family: -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     
+
     .title__categoria{
-        /* font-size: 1.6rem;
-        font-weight: 700;
-        letter-spacing: 0.3rem; */
-        
+        /* font-size: 2.5rem; */
+        text-align: center;
+        padding: 2%;
+
         .letra__q {
             color: $ColorLetraQ;
         }
@@ -389,21 +194,57 @@ html {
 
 /* QuestionGame */
 
-#body__juegos {
-    width: 100%;
+#body-gamePlay{
     height: 100vh;
+}
+
+
+#body-juegos {
+    width: 100%;
+    height: 90vh;
     padding-bottom: 5%;
      background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
      background-size: cover;
 }
 
+#time-life{
+    #timer-container {
+        width: 100%;
+        border-radius: 10px;
+        height: max-content;
+        text-align: center;
+        font-weight: bold;
+        padding: 1%;
+        font-size: 1.5rem;
+
+        .div__time{
+            width: 3000px;
+            max-width: 1500px;
+            border-radius: 10px;
+            height: max-content;
+            background: yellow;
+            text-align: center;
+            font-weight: bold;
+            padding: 1%;
+            font-size: 1.5rem;
+            margin-bottom: 1%;
+        }
+    }
+    #life-container{
+        width: 100%;
+        max-width: max-content;
+        border-radius: 10px;
+        height: max-content;
+        background: yellow;
+        text-align: center;
+        font-weight: bold;
+        padding: 1%;
+        font-size: 1.5rem;
+        margin-bottom: 1%;
+    }
+}
+
 #playRoom {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    padding: 2% 10% 10% 10%; */
 
     #quiz-container {
         display: flex;
@@ -411,28 +252,15 @@ html {
         align-items: center;
         width: 100%;
         max-width: 1200px;
-        padding: 2% 10% 10% 10%;
+        padding: 0% 10% 2% 10%;
         margin: 0 auto;
         text-align: center;
-
-        #timer-container {
-            width: 100%;
-            max-width: max-content;
-            border-radius: 10px;
-            height: max-content;
-            background: yellow;
-            text-align: center;
-            font-weight: bold;
-            padding: 3%;
-            font-size: 1.5rem;
-            margin-bottom: 1%;
-        }
     }
 
     #alert-correct {
         width: 300px;
-        padding: 3%;
-        margin: 2%;
+        padding: 2%;
+        margin-bottom: 1%;
         text-align: center;
         font-size: 1.5rem;
         font-weight: bold;
@@ -471,8 +299,6 @@ html {
     #question-container {
         background-color: #ffd900;
         width: 100%;
-        /* max-width: 1000px; */
-        /* color: whitesmoke; */
         font-weight: bold;
         font-size: 1.5rem;
         border-radius: 10px;
@@ -481,27 +307,21 @@ html {
     }
 
     #answer-buttons-container {
-       /*  display: grid;
-        grid-template-columns: 1fr; */
-        /* grid-template-columns: repeat(2, 1fr); */
-        /* grid-template-columns: 1fr; */
         width: 100%;
         max-width: 1000px;
         border-radius: 5px;
         gap: 10px;
 
-        .answer-button {
+        .answer__button {
             width: 100%;
             background-color: #f9f9f9f1;
             border-radius: 5px;
-            /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); */
             border: none;
             font-size: 16px;
             cursor: pointer;
 
             &:hover {
                 background-color: #f9f9f9f1;
-                /* box-shadow: #e8af05 1px 1px 25px 1px; */
                 transition: all 0.3s;
             }
 
@@ -560,9 +380,6 @@ html {
 
     }
 }
-
-
-
 
 /* Tutorial */
 

@@ -1,6 +1,8 @@
 /* Header */
 
+
 #navbar__inline{
+    height: 35px;
     align-content:center;
     
     .span__login{
@@ -39,6 +41,9 @@
       color:$ColorLetraY;
     }
 
+    #img-category{
+        display: none;
+    }
 
 }
 

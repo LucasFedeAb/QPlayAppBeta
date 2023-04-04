@@ -1,0 +1,90 @@
+/* Responsive */
+@media (max-width: 480px) {
+    //Slider Categorys
+
+    #container-title-category{
+        padding: 8%;
+    }
+
+    .triple-slider .logo-image {
+        width:160px;
+        margin-left: -80px
+    }
+}
+
+@media screen and (max-width: 767px) {
+    //Index
+    .logo {
+        width: 20%;
+    }
+    .link__categoria{
+        font-size: 0.8rem;
+    }
+
+    .tittle__index {
+        font-size: 2.5rem;
+    }
+
+    #button-index {
+        margin-top: 15%;
+
+        .button__jugar{
+            padding: 2% 30% 2% 30%;
+        }
+    }
+
+    #navbar__inline {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: end;
+    }
+    //Categorys
+
+
+    .title__categoria{
+        
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: 0.3rem;
+    }
+
+    //GamePlay
+    #answer-buttons-container {
+        grid-template-columns: 1fr;
+    }
+
+    .question {
+        padding: 10px;
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+    //Index
+    .logo {
+        width: 10%;
+    }
+    .tittle__index {
+        font-size: 3rem;
+    }
+
+    #button-index {
+        margin-top: 5%;
+        .button__jugar{
+            padding: 2% 20% 2% 20%;
+        }
+    }
+
+    //Categorys
+
+    #container-title-category{
+        padding: 0%;
+    }
+    .title__categoria{
+        font-size: 3.5rem;
+        font-weight: 700;
+        letter-spacing: 0.3rem;
+    }
+}
+
+/* fin Responsive  */
