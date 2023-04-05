@@ -9,7 +9,7 @@ class Category {
 }
 
 const categorys=[
-    new Category ("Geografia","./gamePlay.html","geography.jpg"),
+    new Category ("Geografia","./gamePlay.html","geocop.jpeg"),
     new Category ("Deportes","./gamePlay.html","sports.jpg"),
     new Category ("Historia","./gamePlay.html","history.jpg"),
     new Category ("Programacion","./gamePlay.html","devs.jpg"),
@@ -40,6 +40,13 @@ categorys.forEach(category=>{
         <img class="logo-image logo-image-1" data-swiper-parallax-x="50%" src="./images/guardians-of-the-galaxy-logo.png" alt="">
     </div>`
 })
+
+/* let nameCategory = document.querySelector('#container-category-name')
+categorys.forEach(category=>{
+    nameCategory.innerHTML +=`
+    <h3 class="category__name text-center">${category.nombre}</h3 `
+}) */
+
 
 let navCategory = document.querySelector('#liNav');
 let categorySelectNav

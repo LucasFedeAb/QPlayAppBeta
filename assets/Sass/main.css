@@ -518,7 +518,7 @@ body {
   .title__categoria {
     font-size: 3.5rem;
     font-weight: 700;
-    letter-spacing: 0.3rem;
+    letter-spacing: 1rem;
   }
 }
 /* fin Responsive  */
@@ -532,8 +532,9 @@ html {
   height: 94vh;
   font-family: Arial, sans-serif;
   font-size: 16px;
-  background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
-  background-size: cover;
+  /* background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
+  background-size: cover; */
+  background: #26213d;
   box-shadow: 0.5;
   opacity: 0.9;
   text-align: center;
@@ -635,9 +636,10 @@ html {
 /* Categorys */
 #categorias {
   height: 100vh;
-  background: url(../Image/Background/abtracto9.jpg) center;
+  /* background: url(../Image/Background/abtracto9.jpg) center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
+  background: #26213d;
   color: #fff;
   line-height: 1.5;
   font-family: -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, "Segoe UI", Roboto, sans-serif;
@@ -664,6 +666,10 @@ html {
 #categorias .title__categoria .letra__y {
   color: #C9FFA5;
 }
+#categorias .bg-image {
+  width: 100%;
+  /* height: auto; */
+}
 #categorias .card {
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
   border-radius: 100%;
@@ -672,14 +678,15 @@ html {
 /* QuestionGame */
 #body-gamePlay {
   height: 100vh;
+  background: #26213d;
 }
 
 #body-juegos {
   width: 100%;
   height: 90vh;
   padding-bottom: 5%;
-  background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
-  background-size: cover;
+  /* background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
+  background-size: cover; */
 }
 
 #time-life #timer-container {
@@ -693,7 +700,8 @@ html {
   font-size: 1.5rem;
 }
 #time-life #timer-container .div__time {
-  width: 3000px;
+  width: -moz-max-content;
+  width: max-content;
   max-width: 1500px;
   border-radius: 10px;
   height: -moz-max-content;
@@ -720,6 +728,81 @@ html {
   margin-bottom: 1%;
 }
 
+/* #line {
+    margin: 0% 25%;
+    background-color: yellowgreen;
+} */
+#time-line {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-rows: 1fr;
+  height: 15px;
+  gap: 2px;
+}
+
+/* #null{
+    grid-column: 1/2;
+    grid-row: 1/2;
+} */
+.countdown-line {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  width: 100%;
+  height: 15px;
+  border-radius: 10px;
+  /* border-bottom: 1px solid yellowgreen; */
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-line::after {
+  content: "";
+  height: 15px;
+  position: absolute;
+  background-color: #C9FFA5;
+  top: 0;
+  left: 0;
+  animation: countdown 15s linear;
+}
+@keyframes countdown {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* #nulo{
+    grid-column: 3/4;
+    grid-row: 1/2;
+} */
+/* #line {
+    background-color: black;
+    animation-name: countdown;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+    @keyframes countdown {
+        from {
+            width: 100%;
+        }
+
+        to {
+            width: 0%;
+        }
+    }
+} */
+/* .time__line{
+    margin: 0% 5%;
+    text-align: center;
+    height: 7px;
+    bottom: 0px;
+    left: 0px;
+    background: yellowgreen;
+} */
 #playRoom #quiz-container {
   display: flex;
   flex-direction: column;
@@ -741,7 +824,8 @@ html {
 }
 #playRoom #alert-correct .textCorrect {
   border-radius: 10px;
-  background-color: #27ae60;
+  /* background-color: #27ae60; */
+  background-color: #23903c;
   color: white;
   font-weight: bold;
   padding: 10px;

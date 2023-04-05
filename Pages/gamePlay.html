@@ -11,6 +11,8 @@
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <!-- CSS propio -->
   <!-- <link rel="stylesheet" type="text/css" href="../CSS/style.css"> -->
+  <!-- FontAweome CDN Link for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   <link rel="stylesheet" type="text/css" href="../assets/Sass/main.css">
 </head>
 
@@ -117,19 +119,27 @@
       </div>
     </nav>
   </header>
-
+  
   <main id="body-juegos" >
     <section id="time-life" class="text-center">
       <div id="timer-container" class="d-flex d-flex-row g-5 align-items-center justify-content-center">
         <div class="div__time">
           <p>Tiempo restante: <span id="timer"></span></p>
         </div>
-        
         <div id="life-container" class="g-5 ms-5 text-center align-items-center justify-content-center">
           <p>VIDAS: <span id="life"></span></p>
         </div>
       </div>
+
+      <!-- <div class="time__line"></div> -->
+      <!-- <div id="line" style="width: 100%; height: 10px;"></div> -->
+      <!-- <div id="line" style="width: 80%; border-bottom: 8px solid yellowgreen;"></div> -->
     </section>
+    <div id="time-line">
+      <div id="null"></div>
+      <div id="line" class="countdown-line"></div>
+      <div id="nulo"></div>
+    </div>
     <section id="playRoom">
       <div id="quiz-container">
         

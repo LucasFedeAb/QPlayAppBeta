@@ -20,8 +20,9 @@ html {
     height: 94vh;
     font-family: Arial, sans-serif;
     font-size: $base-font-size;
-    background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
-    background-size: cover;
+    /* background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
+    background-size: cover; */
+    background: #26213d;
     box-shadow: 0.5;
     opacity: 0.9;
     text-align: center;
@@ -39,16 +40,18 @@ html {
     width: 100%;
     max-width: 400px;
     animation: spin 3s linear reverse;
+
     @keyframes spin {
         0% {
             transform: rotate(0deg);
         }
+
         100% {
             transform: rotate(90deg);
             animation-duration: 4s;
         }
     }
-    
+
 }
 
 // Nombre del juego
@@ -107,6 +110,7 @@ html {
 // Boton Jugar
 #button-index {
     text-align: center;
+
     .button__jugar {
         color: #000000;
         font-size: 1.5rem;
@@ -117,8 +121,8 @@ html {
         transition: all 0.5s ease;
         text-decoration: none;
         letter-spacing: 0.2rem;
-        
-        
+
+
 
         &:hover {
             transform: scale(1.1);
@@ -127,6 +131,7 @@ html {
             color: #000000;
             box-shadow: 0 0 1rem #C9FFA5;
         }
+
         &:active {
             transform: scale(1.1);
             background-color: #C9FFA5;
@@ -145,19 +150,19 @@ html {
 
 /* Categorys */
 
-#categorias{
+#categorias {
     height: 100vh;
-    background: url(../Image/Background/abtracto9.jpg) center;
+    /* background: url(../Image/Background/abtracto9.jpg) center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
+    background: #26213d;
     color: #fff;
     line-height: 1.5;
     font-family: -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, "Segoe UI", Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    
 
-    .title__categoria{
+    .title__categoria {
         /* font-size: 2.5rem; */
         text-align: center;
         padding: 2%;
@@ -172,7 +177,7 @@ html {
 
         .letra__l {
             color: $ColorLetraL;
-            
+
         }
 
         .letra__a {
@@ -184,9 +189,12 @@ html {
         }
 
     }
-
-    .card{
-        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+    .bg-image{
+        width: 100%;
+        /* height: auto; */
+    }
+    .card {
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
         border-radius: 100%;
     }
 }
@@ -194,8 +202,9 @@ html {
 
 /* QuestionGame */
 
-#body-gamePlay{
+#body-gamePlay {
     height: 100vh;
+    background: #26213d;
 }
 
 
@@ -203,11 +212,11 @@ html {
     width: 100%;
     height: 90vh;
     padding-bottom: 5%;
-     background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
-     background-size: cover;
+    /* background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
+    background-size: cover; */
 }
 
-#time-life{
+#time-life {
     #timer-container {
         width: 100%;
         border-radius: 10px;
@@ -217,8 +226,8 @@ html {
         padding: 1%;
         font-size: 1.5rem;
 
-        .div__time{
-            width: 3000px;
+        .div__time {
+            width: max-content;
             max-width: 1500px;
             border-radius: 10px;
             height: max-content;
@@ -230,7 +239,8 @@ html {
             margin-bottom: 1%;
         }
     }
-    #life-container{
+    
+    #life-container {
         width: 100%;
         max-width: max-content;
         border-radius: 10px;
@@ -244,6 +254,88 @@ html {
     }
 }
 
+/* #line {
+    margin: 0% 25%;
+    background-color: yellowgreen;
+} */
+#time-line{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 1fr;
+    height: 15px;
+    gap:2px;
+}
+
+/* #null{
+    grid-column: 1/2;
+    grid-row: 1/2;
+} */
+
+.countdown-line {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    width: 100%;
+    height: 15px;
+    border-radius: 10px;
+    /* border-bottom: 1px solid yellowgreen; */
+    position: relative;
+    overflow: hidden;
+}
+
+.countdown-line::after {
+    content: "";
+    height: 15px;
+    position: absolute;
+    background-color: $colorFluor;
+    top: 0;
+    left: 0;
+    animation: countdown 15s linear;
+    @keyframes countdown {
+        from {
+            width: 0%;
+        }
+    
+        to {
+            width: 100%;
+        }
+    }
+}
+
+/* #nulo{
+    grid-column: 3/4;
+    grid-row: 1/2;
+} */
+  
+
+/* #line {
+    background-color: black;
+    animation-name: countdown;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+    @keyframes countdown {
+        from {
+            width: 100%;
+        }
+    
+        to {
+            width: 0%;
+        }
+    }
+} */
+
+
+
+/* .time__line{
+    margin: 0% 5%;
+    text-align: center;
+    height: 7px;
+    bottom: 0px;
+    left: 0px;
+    background: yellowgreen;
+} */
 #playRoom {
 
     #quiz-container {
@@ -268,7 +360,8 @@ html {
 
         .textCorrect {
             border-radius: 10px;
-            background-color: #27ae60;
+            /* background-color: #27ae60; */
+            background-color: #23903c;
             color: #ffff;
             font-weight: bold;
             padding: 10px;
@@ -329,6 +422,8 @@ html {
                 background-color: #f9f9f9f1;
                 transition: all 0.3s;
             }
+
+            
         }
 
         .correct {
@@ -336,7 +431,7 @@ html {
             color: #ffff;
             font-weight: bold;
 
-            &:hover{
+            &:hover {
                 background-color: #27ae60;
                 color: #ffff;
                 font-weight: bold;
