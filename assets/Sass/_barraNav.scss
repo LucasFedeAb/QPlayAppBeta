@@ -1,0 +1,97 @@
+.container__foot {
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    /* background: #212121; */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+.container__foot .menu__foot {
+    display: flex;
+    position: relative;
+}
+
+.container__foot .menu__foot li {
+    font-size: 30px;
+    list-style: none;
+    flex: 1;
+    cursor: pointer;
+    user-select: none;
+}
+
+.container__foot .menu__foot li a {
+    /* color: #1d1f20; */
+    color: lightgray;
+    transition: color 0.3s ease;
+}
+
+.container__foot .menu__foot li:hover a {
+    /* color: #f23b26; */
+    color: #ccc;
+}
+
+/* .container__foot .menu__foot li:first-child a {
+    color: $colorFluor;
+} */
+
+.container__foot .menu__foot .line {
+    position:absolute;
+    height: 5px;
+    width: 20%;
+    background:lightgrey;
+    left: 40%;
+    top: 0;
+    transition: all 0.3s ease;  
+    display: none; 
+}
+
+.container__foot .menu__foot li:nth-child(1):hover~.line {
+    
+    left: 0%;
+    display: block;
+}
+
+.container__foot .menu__foot li:nth-child(2):hover~.line {
+    
+    left: 20%;
+    display: block;
+}
+
+.container__foot .menu__foot li:nth-child(3):hover~.line {
+    left:40%;
+    display: none;
+}
+
+.container__foot .menu__foot li:nth-child(4):hover~.line {
+    
+    left: 60%;
+    display: block;
+}
+
+.container__foot .menu__foot li:nth-child(5):hover~.line {
+
+    left: 80%;
+    display: block;
+}
+
+/* .img__icon__foot{
+    width: 60px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    margin-bottom: 2px;
+} */
+
+.icon__home{
+    color: $ColorLetraL;
+    font-size: 45px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}

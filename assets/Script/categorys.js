@@ -54,11 +54,11 @@ let categorySelectNav
 //Ocultamos la foto del nav con css
 categorys.forEach(category=>{
     navCategory.innerHTML +=`
-    <li><a id="${category.nombre}" class="dropdown-item nav__item__category" href="${category.href}"><img src="#" id="img-category"  alt="${category.nombre}">${category.nombre}</a></li> `
+    <li><a id="${category.nombre}" class="dropdown-item nav__item__category mb-2" href="${category.href}"><img src="#" id="img-category"  alt="${category.nombre}">${category.nombre}</a></li> `
 })
 
 document.querySelectorAll('#liNav a').forEach(link => {
-    link.addEventListener('click', (event) => {
+    link.addEventListener('click', () => {
         // Evitar que se siga el enlace
         /* event.preventDefault(); */
 

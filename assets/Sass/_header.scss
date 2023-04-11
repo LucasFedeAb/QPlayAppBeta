@@ -1,5 +1,6 @@
 /* Header */
 
+//Navbar
 
 #navbar__inline{
     height: 35px;
@@ -43,6 +44,11 @@
 
     #img-category{
         display: none;
+    }
+
+    .btn__salir{
+        position: absolute;
+        bottom: 0%;
     }
 
 }

@@ -1,5 +1,5 @@
 /* Responsive */
-@media (max-width: 480px) {
+@media (max-width: 575px) {
     //Slider Categorys
 
     #container-title-category{
@@ -10,10 +10,8 @@
         width:160px;
         margin-left: -80px
     }
-}
-
-@media screen and (max-width: 767px) {
     //Index
+
     .logo {
         width: 20%;
     }
@@ -25,11 +23,12 @@
         font-size: 2.5rem;
     }
 
+
     #button-index {
-        margin-top: 15%;
+        margin-top: 20%;
 
         .button__jugar{
-            padding: 2% 30% 2% 30%;
+            padding: 4% 35% 4% 35%;
         }
     }
 
@@ -49,12 +48,79 @@
     }
 
     //GamePlay
+
+    #card-game{
+        margin: 2% 0%;
+    }
+
+    
     #answer-buttons-container {
-        grid-template-columns: 1fr;
+        width: 90%;
     }
 
     .question {
         padding: 10px;
+    }
+
+    #footer-web{
+        display: none;
+    }
+
+}
+
+
+@media (min-width:575px) and (max-width:767px) {
+    //Index
+
+    .logo {
+        width: 20%;
+    }
+    .link__categoria{
+        font-size: 0.8rem;
+    }
+
+    .tittle__index {
+        font-size: 2.5rem;
+    }
+
+
+    #button-index {
+        margin-top: 20%;
+
+        .button__jugar{
+            padding: 4% 35% 4% 35%;
+        }
+    }
+
+    #navbar__inline {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: end;
+    }
+    //Categorys
+
+
+    .title__categoria{
+        
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: 0.3rem;
+    }
+
+    //GamePlay
+
+    #card-game{
+        margin: 2% 5%;
+    }
+    #answer-buttons-container {
+        width: 100%;
+    }
+    .question {
+        padding: 10px;
+    }
+
+    #footer-web{
+        display: none;
     }
 
 }
@@ -85,6 +151,25 @@
         font-weight: 700;
         letter-spacing: 1rem;
     }
+
+
+    //Game Play
+
+    #card-game{
+        margin: 3% 20%;
+    }
+
+    #answer-buttons-container {
+        width: 100%;
+    }
+
+    #footer-mobile{
+        display: none;
+    }
+
+    /* #footer-web{
+        display: none;
+    } */
 }
 
 /* fin Responsive  */

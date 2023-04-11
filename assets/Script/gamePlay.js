@@ -33,9 +33,11 @@ const showBtn2 = document.querySelector(".btn2");
 const showBtn3 = document.querySelector(".btn3");
 const btnAnswers = document.querySelector("#btn-answers");
 const timerContainer = document.querySelector(".div__time");
-const lifeContainer = document.querySelector("#life");
+const timerText = document.querySelector("#timer-text");
+const lifeContainer = document.querySelector("#life-container");
 const timeLine = document.querySelector('.time__line');
 const line = document.getElementById("line");
+/* const lifeIcon = document.querySelector('.life__icon'); */
 
 /* Funcion asignar valor string */
 function varValue(valueString) {
@@ -135,7 +137,8 @@ function checkAnswer(selectedAnswer) {
     // detener el temporizador
     clearInterval(timer);
     line.classList.remove("countdown-line");
-
+    timerContainer.classList.remove('animate__animated', 'animate__repeat-3', 'animate__flash', 'div__time', 'div__time__end');
+    timerContainer.classList.add('time__empty');
     // verificar si la respuesta es correcta y actualizar el botón
     let btn = document.querySelector(".btn" + selectedAnswer);
     let textAlert = document.querySelector(".alert__msg");
@@ -149,6 +152,19 @@ function checkAnswer(selectedAnswer) {
 
     } else {
         life--;
+
+        switch (life) {
+            case 2:
+                document.querySelector('.life__3').remove();
+            break;
+            case 1:
+                document.querySelector('.life__2').remove();
+            break;
+            case 0:
+                document.querySelector('.life__1').remove();
+            break;
+        }
+
         console.log(life);
         /* btn.innerHTML='<div class="icon cross"><i class="fas fa-times"></i></div>'; */
         btn.classList.add("incorrect");
@@ -166,12 +182,15 @@ function checkAnswer(selectedAnswer) {
     // pasar a la siguiente pregunta después de 1 segundo
     setTimeout(function () {
         // restablecer los botones
+        timerContainer.classList.remove('time__empty');
         line.classList.add("countdown-line");
+        timerContainer.classList.add('div__time');
         btn.classList.remove("correct");
         btn.classList.remove("incorrect");
         textAlert.classList.remove("textCorrect");
         textAlert.classList.remove("textIncorrect");
         document.querySelector(".alert__msg").innerText = ` `;
+        
         document.querySelector(`.btn${answerCategory[currentQuestion].correctAnswer}`).classList.remove("correct");
         // pasar a la siguiente pregunta o mostrar el puntaje final
         //console.log(currentQuestion);
@@ -191,10 +210,12 @@ function checkAnswer(selectedAnswer) {
 
 function showQuestion() {
     // restablecer el temporizador
+    timerContainer.classList.remove('time__empty');
     clearInterval(timer);
     line.classList.add("countdown-line");
-    document.querySelector("#timer").innerText = 15;
-    document.querySelector("#life").innerText = life;
+    timerContainer.classList.add('div__time');
+    timerText.innerText = `Tiempo: 15`;
+    /* document.querySelector("#life").innerText = life; */
     // mostrar la pregunta y las respuestas posibles
     showCategory.innerText = answerCategory[currentQuestion].category;
     showQuest.innerText = answerCategory[currentQuestion].question;
@@ -227,10 +248,23 @@ function startTimer() {
     // actualizar el temporizador cada segundo
     timer = setInterval(function () {
         // restablecer el temporizador si se acaba el tiempo
-        if (time <= 0) {
+        if (time <=0) {
             line.classList.remove("countdown-line");
+            timerContainer.classList.remove('animate__animated', 'animate__repeat-3', 'animate__flash', 'div__time__end', 'div__time');
+            timerContainer.classList.add('time__empty');
             clearInterval(timer);
             life--;
+            switch (life) {
+                case 2:
+                    document.querySelector('.life__3').remove();
+                break;
+                case 1:
+                    document.querySelector('.life__2').remove();
+                break;
+                case 0:
+                    document.querySelector('.life__1').remove();
+                break;
+            }
             // pasar a la siguiente pregunta
             setTimeout(function () {
                 // pasar a la siguiente pregunta o mostrar el puntaje final
@@ -246,7 +280,16 @@ function startTimer() {
         }
 
         // actualizar la visualización del temporizador
-        document.querySelector("#timer").innerText = time;
+
+        if (time < 10) {
+            timerText.innerText = `Tiempo: 0${time}`;
+        } else{
+            timerText.innerText = `Tiempo: ${time}`;
+        }
+
+        if (time && time < 4) {
+            timerContainer.classList.add('animate__animated', 'animate__repeat-3', 'animate__flash', 'div__time__end');
+        }
         time--;
     }, 1000);
 }
@@ -260,10 +303,13 @@ function showScore() {
     showBtn2.disabled = true;
     showBtn3.disabled = true;
     line.classList.remove("countdown-line");
+    timerContainer.classList.remove('animate__animated', 'animate__repeat-3', 'animate__flash', 'div__time__end');
     btnAnswers.remove("#btn-answers");
     timerContainer.remove(".div__time");
-    lifeContainer.innerText = life;
-
+    lifeContainer.remove();
+    showCategory.innerText = `Vidas:${life}`;
+    showQuest.remove();
+    document.querySelector("#question-container").remove();
 
     // mostrar el puntaje final
     let score = 0;

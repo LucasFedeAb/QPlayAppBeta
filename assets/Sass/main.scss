@@ -1,6 +1,7 @@
 @import './reset';
 @import './vars';
 @import './header';
+@import './barraNav';
 @import './footer';
 @import './slider';
 @import './responsive';
@@ -15,9 +16,10 @@ html {
     font-family: sans-serif;
 }
 
+
 #body-index {
     width: 100%;
-    height: 94vh;
+    height: 100%;
     font-family: Arial, sans-serif;
     font-size: $base-font-size;
     /* background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
@@ -117,7 +119,6 @@ html {
         border-radius: 5rem;
         border: none;
         background-color: #C9FFA5;
-        padding: 2% 20% 2% 20%;
         transition: all 0.5s ease;
         text-decoration: none;
         letter-spacing: 0.2rem;
@@ -151,7 +152,7 @@ html {
 /* Categorys */
 
 #categorias {
-    height: 100vh;
+    height: 100%;
     /* background: url(../Image/Background/abtracto9.jpg) center;
     background-repeat: no-repeat;
     background-size: cover; */
@@ -203,54 +204,96 @@ html {
 /* QuestionGame */
 
 #body-gamePlay {
-    height: 100vh;
+    height: 100%;
+    max-height: 100%;
+    /* background: #26213d; */
     background: #26213d;
+    padding-bottom: 3%;
+
+    #life-container {
+        width: max-content;
+        max-width: 10%;
+        border: 2px solid $ColorLetraL;
+        border-radius: 3px;
+        height: max-content;
+        /* background: $ColorLetraL; */
+        text-align: center;
+        font-weight: bold;
+        font-size: 0.8rem;
+
+        #life{
+            background: $ColorLetraL;
+        }
+
+        .life__text{
+            padding: 2%;
+            text-align: center;
+            background: $ColorLetraL;
+            /* border-radius: 10px; */
+        }
+        .img__life{
+            width: 30%;
+        }  
+    }
+    
+}
+
+#card-game{
+    
+    border-radius: 10px solid #26213d;
+    
+    #body-juegos {
+        width: 100%;
+        border-radius: 10px;
+        /* position: absolute 0% 20%; */
+        height: max-content;
+        background: #08429854;
+        text-align: center;
+        /* background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
+        background-size: cover; */
+    }
 }
 
 
-#body-juegos {
-    width: 100%;
-    height: 90vh;
-    padding-bottom: 5%;
-    /* background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
-    background-size: cover; */
-}
 
 #time-life {
     #timer-container {
-        width: 100%;
-        border-radius: 10px;
-        height: max-content;
+        border-radius: 2px;
         text-align: center;
         font-weight: bold;
-        padding: 1%;
-        font-size: 1.5rem;
-
+        font-size: 1rem;
+        
         .div__time {
-            width: max-content;
-            max-width: 1500px;
-            border-radius: 10px;
+            width: 90px;
+            border-radius: 3px;
             height: max-content;
-            background: yellow;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
             text-align: center;
             font-weight: bold;
-            padding: 1%;
-            font-size: 1.5rem;
             margin-bottom: 1%;
+            padding: 5% 1%;
         }
-    }
-    
-    #life-container {
-        width: 100%;
-        max-width: max-content;
-        border-radius: 10px;
-        height: max-content;
-        background: yellow;
-        text-align: center;
-        font-weight: bold;
-        padding: 1%;
-        font-size: 1.5rem;
-        margin-bottom: 1%;
+
+        .div__time__end {
+            width: 90px;
+            border-radius: 3px;
+            height: max-content;
+            color: #721c24;
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 1%;
+            padding: 5% 1%;
+        }
+
+        .time__empty{
+            display: none;
+        }
+
+
     }
 }
 
@@ -260,11 +303,10 @@ html {
 } */
 #time-line{
     width: 100%;
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr 8fr 1fr;
-    grid-template-rows: 1fr;
-    height: 15px;
-    gap:2px;
+    grid-template-rows: 1fr; */
+    height: 21px;
 }
 
 /* #null{
@@ -273,11 +315,13 @@ html {
 } */
 
 .countdown-line {
-    grid-column: 2/3;
-    grid-row: 1/2;
+    /* grid-column: 2/3;
+    grid-row: 1/2; */
+    /* background:$colorFluor; */
     width: 100%;
-    height: 15px;
-    border-radius: 10px;
+    height: 21px;
+    padding: 1%;
+    /* border-radius: 10px; */
     /* border-bottom: 1px solid yellowgreen; */
     position: relative;
     overflow: hidden;
@@ -285,7 +329,7 @@ html {
 
 .countdown-line::after {
     content: "";
-    height: 15px;
+    height: 21px;
     position: absolute;
     background-color: $colorFluor;
     top: 0;
@@ -344,7 +388,7 @@ html {
         align-items: center;
         width: 100%;
         max-width: 1200px;
-        padding: 0% 10% 2% 10%;
+        padding: 0% 0% 2% 0%;
         margin: 0 auto;
         text-align: center;
     }
@@ -356,21 +400,21 @@ html {
         text-align: center;
         font-size: 1.5rem;
         font-weight: bold;
-        color: white;
+        /* color: white; */
 
         .textCorrect {
             border-radius: 10px;
             /* background-color: #27ae60; */
-            background-color: #23903c;
-            color: #ffff;
+            background: #d4edda;
+            color: #155724;
             font-weight: bold;
             padding: 10px;
         }
 
         .textIncorrect {
             border-radius: 10px;
-            background-color: #c0392b;
-            color: #ffff;
+            color: #721c24;
+            background: #f8d7da;
             font-weight: bold;
             padding: 10px;
         }
@@ -383,14 +427,16 @@ html {
         font-size: 1.5rem;
         font-weight: bold;
         letter-spacing: 0.1rem;
-        background-color: #ff4800d0;
+        background: $ColorLetraL;
+        /* background-color: #ff4800d0; */
         color: white;
         border-radius: 5px;
         margin-bottom: 1%;
     }
 
     #question-container {
-        background-color: #ffd900;
+        background: $ColorLetraP;
+        /* background-color: #ffd900; */
         width: 100%;
         font-weight: bold;
         font-size: 1.5rem;
@@ -400,7 +446,6 @@ html {
     }
 
     #answer-buttons-container {
-        width: 100%;
         max-width: 1000px;
         border-radius: 5px;
         gap: 10px;
@@ -427,31 +472,40 @@ html {
         }
 
         .correct {
-            background-color: #27ae60;
-            color: #ffff;
+            color: #155724;
+            background: #d4edda;
+            /* background-color: #27ae60;
+            color: #ffff; */
             font-weight: bold;
 
             &:hover {
-                background-color: #27ae60;
-                color: #ffff;
+                color: #155724;
+                background: #d4edda;
+                /* background-color: #27ae60;
+                color: #ffff; */
                 font-weight: bold;
             }
         }
 
         .incorrect {
-            background-color: #c0392b;
-            color: #ffff;
+            color: #721c24;
+            background: #f8d7da;
+            /* background-color: #c0392b;
+            color: #ffff; */
             font-weight: bold;
 
             &:hover {
-                background-color: #c0392b;
-                color: #ffff;
+                color: #721c24;
+                background: #f8d7da;
+                /* background-color: #c0392b;
+                color: #ffff; */
                 font-weight: bold;
             }
         }
     }
 
     #score-container {
+        width: 100%;
         font-weight: bold;
         padding: 1%;
         border-radius: 10px;
