@@ -49,13 +49,30 @@
 
     //GamePlay
 
+    #life-container {
+        width: 100%;
+        max-width: 80px;
+        .img__life{
+            width: 12px;
+            max-width: 12px;
+        } 
+    }
+
     #card-game{
         margin: 2% 0%;
     }
 
-    
+    #category-container {
+        font-size: 1rem;
+    }
+
+    #question-container {
+        font-size: 1rem;
+    }
+
     #answer-buttons-container {
         width: 90%;
+        font-size: 1rem;
     }
 
     .question {
@@ -109,11 +126,30 @@
 
     //GamePlay
 
+    #life-container {
+        width: 100%;
+        max-width: 130px;
+        .img__life{
+            width: 25px;
+            max-width: 25px;
+        } 
+    }
+
+    #category-container {
+        font-size: 1.2rem;
+    }
+
     #card-game{
         margin: 2% 5%;
     }
+
+    #question-container {
+        font-size: 1.2rem;
+    }
+
     #answer-buttons-container {
         width: 100%;
+        font-size: 1.2rem;
     }
     .question {
         padding: 10px;
@@ -155,12 +191,30 @@
 
     //Game Play
 
+    #life-container {
+        width: 100%;
+        max-width: 130px;
+        .img__life{
+            width: 25px;
+            max-width: 25px;
+        } 
+    }
+
+    #category-container {
+        font-size: 1.5rem;
+    }
+
     #card-game{
         margin: 3% 20%;
     }
 
+    #question-container {
+        font-size: 1.5rem;
+    }
+
     #answer-buttons-container {
         width: 100%;
+        font-size: 1.5rem;
     }
 
     #footer-mobile{

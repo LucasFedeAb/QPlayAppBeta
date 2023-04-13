@@ -1,11 +1,13 @@
 /* Importamos array de preguntas y respuestas */
 import { geography, history, sports, devs, } from './questions.js';
 
+
 /* Recuperamos variables almacenadas en storage*/
 let categorySelect = localStorage.getItem('categorySelect');
 let categorySelectNav = localStorage.getItem('categorySelectNav');
 let SelectNavGame
 let categoryDefault
+let userId
 
 //variables
 let answerCategory; //almacenar array a barajar
@@ -15,6 +17,8 @@ let isAnswered = false;
 let getScore = 0;
 let life = 3;
 let timer;
+let alias;
+
 /* let counterLine;
 
 /* Botones nav gamePlay */
@@ -22,6 +26,7 @@ const navSports = document.querySelector('#nav-deportes');
 const navGeography = document.querySelector('#nav-geografia');
 const navHistory = document.querySelector('#nav-historia');
 const navDevs = document.querySelector('#nav-programacion');
+const navVehiculos = document.querySelector('#nav-vehiculos');
 const navAll = document.querySelector('#nav-aleatorio');
 
 /* Mostrar contenido */
@@ -37,7 +42,9 @@ const timerText = document.querySelector("#timer-text");
 const lifeContainer = document.querySelector("#life-container");
 const timeLine = document.querySelector('.time__line');
 const line = document.getElementById("line");
+const avatar = document.getElementById("avatar-container");
 /* const lifeIcon = document.querySelector('.life__icon'); */
+
 
 /* Funcion asignar valor string */
 function varValue(valueString) {
@@ -51,6 +58,7 @@ navGeography.addEventListener("click", function () { varValue("Geografia"); });
 navHistory.addEventListener("click", function () { varValue("Historia"); });
 navDevs.addEventListener("click", function () { varValue("Programacion"); });
 navAll.addEventListener("click", function () { varValue("Aleatorio"); });
+navVehiculos.addEventListener("click", function () { varValue("Vehiculos"); });
 
 /* Recuperamos informacion de click storage */
 SelectNavGame = localStorage.getItem('SelectNavGame');
@@ -65,6 +73,12 @@ addCategory(geography, "GEOGRAFIA");
 addCategory(sports, "DEPORTES");
 addCategory(history, "HISTORIA");
 addCategory(devs, "PROGRAMACION");
+/* addCategory(vehicles, "VEHICULOS"); */
+
+//let cars
+
+
+
 //Creamos array todas las categorias
 const allCategory = geography.concat(sports, history, devs);
 
@@ -86,6 +100,10 @@ function clickCategory(btnCategory) {
         case "Aleatorio":
             answerCategory = allCategory;
             break;
+        /* case "Vehiculos":
+            answerCategory = vehicles;
+        break; */
+        
     }
 }
 
@@ -98,6 +116,7 @@ function handleCategorySelection(category) {
     localStorage.removeItem('categorySelect');
     localStorage.removeItem('categorySelectNav');
     localStorage.removeItem('SelectNavGame');
+    
 }
 
 // Llamada a la función para cada caso
@@ -139,11 +158,12 @@ function checkAnswer(selectedAnswer) {
     line.classList.remove("countdown-line");
     timerContainer.classList.remove('animate__animated', 'animate__repeat-3', 'animate__flash', 'div__time', 'div__time__end');
     timerContainer.classList.add('time__empty');
+
     // verificar si la respuesta es correcta y actualizar el botón
     let btn = document.querySelector(".btn" + selectedAnswer);
     let textAlert = document.querySelector(".alert__msg");
+
     if (selectedAnswer === answerCategory[currentQuestion].correctAnswer) {
-        /* btn.innerHTML= '<div class="icon tick"><i class="fas fa-check"></i></div>'; */
         btn.classList.add("correct");
         textAlert.classList.add("textCorrect");
         getScore = getScore + 10;
@@ -166,7 +186,6 @@ function checkAnswer(selectedAnswer) {
         }
 
         console.log(life);
-        /* btn.innerHTML='<div class="icon cross"><i class="fas fa-times"></i></div>'; */
         btn.classList.add("incorrect");
         textAlert.classList.add("textIncorrect");
         textAlert.innerText = `Incorrecto`;
@@ -293,7 +312,6 @@ function startTimer() {
         time--;
     }, 1000);
 }
-
 // función para mostrar el puntaje final
 
 function showScore() {
@@ -324,7 +342,121 @@ function showScore() {
     scoreFin.classList.add("scoreFin");
     scoreFin.innerText = scoreText;
 
+    swal({
+        title: "Desea abandonar la partida?",
+        text: "Si abandona la partida perdera el progreso!",
+        //icon: "question ",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("Poof! Your imaginary file has been deleted!", {
+            icon: "success",
+          });
+        } else {
+          swal("Your imaginary file is safe!");
+        }
+      });
+
 }
+
+//const avatar = document.querySelector('#avatar');
+
+// Función para generar un avatar Adorable Avatars
+/* function getAdorableAvatar(seed) {
+    // URL de la API de Adorable Avatars
+    const url = `https://api.adorable.io/avatars/285/${seed}.png`;
+
+    // Enviar una solicitud GET a la API de Adorable Avatars utilizando fetch
+    fetch(url)
+        .then(response => {
+            // Comprobar si la respuesta es exitosa
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            // Convertir la respuesta a un archivo de imagen
+            return response.blob();
+        })
+        .then(blob => {
+            // Crear un elemento de imagen en la página web y establecer su atributo src en el archivo de imagen devuelto por la API
+            const avatarImage = document.createElement('img').classList.add('user__img');
+            avatarImage.src = URL.createObjectURL(blob);
+            avatar.appendChild(avatarImage);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+// Ejemplo de cómo usar la función getAdorableAvatar
+const seed = 'lucasfedeab'; // Se podría usar cualquier valor único para cada usuario
+getAdorableAvatar(seed); */
+
+function generateUserId() {
+    userId = localStorage.getItem('userId');
+    if (!userId) {
+      // Si el identificador único no está almacenado en el localStorage, se genera uno nuevo
+      userId = Date.now().toString(36) + Math.random().toString(36).substring(2, 5);
+      localStorage.setItem('userId', userId);
+      
+    }
+    return userId;
+}
+generateUserId();
+
+/* let id = userId;
+localStorage.setItem('id', id);
+
+let idUser
+idUser = localStorage.getItem('id');
+localStorage.setItem('idUser', idUser);
+idUser = localStorage.getItem('userId');
+console.log(id);
+console.log(idUser); */
+
+/* localStorage.removeItem('userId'); */
+
+console.log(userId);
+const changeavatar = document.querySelector('.change');
+let avatarElement
+function createAvatar(username) {
+    //const url = `https://avatars.dicebear.com/api/avataaars/${username}.svg`;
+    const url = `https://avatars.dicebear.com/api/bottts/${username}.svg`;
+
+    fetch(url)
+        
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            console.log(response);
+            return response.text();
+        })
+        .then(svg => {
+            avatarElement = document.createElement("img");
+            avatarElement.setAttribute('class', 'user__img w-25 me-3');
+            avatarElement.setAttribute("src", `data:image/svg+xml,${encodeURIComponent(svg)}`);
+            avatarElement.setAttribute("alt", `Avatar for ${username}`);
+            avatar.appendChild(avatarElement);
+        })
+        .catch(error => {
+            console.error("Error fetching avatar:", error);
+        });
+}
+
+
+/* const username = 'asd'; */
+createAvatar(userId);
+
+changeavatar.addEventListener("click", function () { 
+    localStorage.removeItem('userId');
+    generateUserId();
+    avatarElement.remove();
+    createAvatar(userId);
+});
+/* createAvatar(username); */
+
 // iniciar la prueba al cargar la página
 showQuestion();
 

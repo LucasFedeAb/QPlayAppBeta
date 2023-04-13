@@ -13,7 +13,7 @@
 }
 
 .container__foot .menu__foot li {
-    font-size: 30px;
+    font-size: 25px;
     list-style: none;
     flex: 1;
     cursor: pointer;
@@ -22,13 +22,13 @@
 
 .container__foot .menu__foot li a {
     /* color: #1d1f20; */
-    color: lightgray;
+    color: white;
     transition: color 0.3s ease;
 }
 
 .container__foot .menu__foot li:hover a {
     /* color: #f23b26; */
-    color: #ccc;
+    color: white;
 }
 
 /* .container__foot .menu__foot li:first-child a {
@@ -39,7 +39,7 @@
     position:absolute;
     height: 5px;
     width: 20%;
-    background:lightgrey;
+    background:white;
     left: 40%;
     top: 0;
     transition: all 0.3s ease;  
@@ -85,7 +85,7 @@
     margin-bottom: 2px;
 } */
 
-.icon__home{
+/* .icon__home{
     color: $ColorLetraL;
     font-size: 45px;
     position: absolute;
@@ -94,4 +94,9 @@
     left: 0;
     margin: 0 auto;
     margin-bottom: 20px;
+} */
+
+.icon__home{
+    font-size: 35px;
+    color: $colorFluor;
 }

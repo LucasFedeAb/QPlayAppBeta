@@ -24,7 +24,8 @@ html {
     font-size: $base-font-size;
     /* background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
     background-size: cover; */
-    background: #26213d;
+    /* background: #26213d; */
+    background: #18212b;
     box-shadow: 0.5;
     opacity: 0.9;
     text-align: center;
@@ -156,7 +157,7 @@ html {
     /* background: url(../Image/Background/abtracto9.jpg) center;
     background-repeat: no-repeat;
     background-size: cover; */
-    background: #26213d;
+    background: #18212b;
     color: #fff;
     line-height: 1.5;
     font-family: -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, "Segoe UI", Roboto, sans-serif;
@@ -207,16 +208,13 @@ html {
     height: 100%;
     max-height: 100%;
     /* background: #26213d; */
-    background: #26213d;
+    background: #18212b;
     padding-bottom: 3%;
 
     #life-container {
-        width: max-content;
-        max-width: 10%;
+        align-items: center;
         border: 2px solid $ColorLetraL;
         border-radius: 3px;
-        height: max-content;
-        /* background: $ColorLetraL; */
         text-align: center;
         font-weight: bold;
         font-size: 0.8rem;
@@ -226,28 +224,25 @@ html {
         }
 
         .life__text{
-            padding: 2%;
+            padding: 5%;
             text-align: center;
             background: $ColorLetraL;
-            /* border-radius: 10px; */
         }
-        .img__life{
-            width: 30%;
-        }  
     }
     
 }
 
 #card-game{
     
-    border-radius: 10px solid #26213d;
+    border-radius: 10px solid #18212b;
     
     #body-juegos {
         width: 100%;
         border-radius: 10px;
         /* position: absolute 0% 20%; */
         height: max-content;
-        background: #08429854;
+        /* background: #08429854; */
+        background: #19875412;
         text-align: center;
         /* background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
         background-size: cover; */
@@ -422,9 +417,8 @@ html {
     }
 
     #category-container {
-        width: 100%;
+        width: 90%;
         padding: 2%;
-        font-size: 1.5rem;
         font-weight: bold;
         letter-spacing: 0.1rem;
         background: $ColorLetraL;
@@ -437,9 +431,8 @@ html {
     #question-container {
         background: $ColorLetraP;
         /* background-color: #ffd900; */
-        width: 100%;
+        width: 90%;
         font-weight: bold;
-        font-size: 1.5rem;
         border-radius: 10px;
         padding: 3%;
         margin-bottom: 20px;
@@ -455,7 +448,6 @@ html {
             background-color: #f9f9f9f1;
             border-radius: 5px;
             border: none;
-            font-size: 16px;
             cursor: pointer;
 
             &:hover {

@@ -69,6 +69,7 @@ table {
   font-size: 0.8rem;
 }
 #navbar__inline .user__img {
+  background: #f3f3f3;
   border-radius: 100%;
 }
 #navbar__inline .link__index {
@@ -114,7 +115,7 @@ table {
 }
 
 .container__foot .menu__foot li {
-  font-size: 30px;
+  font-size: 25px;
   list-style: none;
   flex: 1;
   cursor: pointer;
@@ -125,13 +126,13 @@ table {
 
 .container__foot .menu__foot li a {
   /* color: #1d1f20; */
-  color: lightgray;
+  color: white;
   transition: color 0.3s ease;
 }
 
 .container__foot .menu__foot li:hover a {
   /* color: #f23b26; */
-  color: #ccc;
+  color: white;
 }
 
 /* .container__foot .menu__foot li:first-child a {
@@ -141,7 +142,7 @@ table {
   position: absolute;
   height: 5px;
   width: 20%;
-  background: lightgrey;
+  background: white;
   left: 40%;
   top: 0;
   transition: all 0.3s ease;
@@ -182,15 +183,19 @@ table {
     margin: 0 auto;
     margin-bottom: 2px;
 } */
+/* .icon__home{
+    color: $ColorLetraL;
+    font-size: 45px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    margin-bottom: 20px;
+} */
 .icon__home {
-  color: #FF6B6B;
-  font-size: 45px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: 0 auto;
-  margin-bottom: 20px;
+  font-size: 35px;
+  color: #C9FFA5;
 }
 
 /* Footer */
@@ -588,11 +593,26 @@ body {
     font-weight: 700;
     letter-spacing: 0.3rem;
   }
+  #life-container {
+    width: 100%;
+    max-width: 80px;
+  }
+  #life-container .img__life {
+    width: 12px;
+    max-width: 12px;
+  }
   #card-game {
     margin: 2% 0%;
   }
+  #category-container {
+    font-size: 1rem;
+  }
+  #question-container {
+    font-size: 1rem;
+  }
   #answer-buttons-container {
     width: 90%;
+    font-size: 1rem;
   }
   .question {
     padding: 10px;
@@ -627,11 +647,26 @@ body {
     font-weight: 700;
     letter-spacing: 0.3rem;
   }
+  #life-container {
+    width: 100%;
+    max-width: 130px;
+  }
+  #life-container .img__life {
+    width: 25px;
+    max-width: 25px;
+  }
+  #category-container {
+    font-size: 1.2rem;
+  }
   #card-game {
     margin: 2% 5%;
   }
+  #question-container {
+    font-size: 1.2rem;
+  }
   #answer-buttons-container {
     width: 100%;
+    font-size: 1.2rem;
   }
   .question {
     padding: 10px;
@@ -661,11 +696,26 @@ body {
     font-weight: 700;
     letter-spacing: 1rem;
   }
+  #life-container {
+    width: 100%;
+    max-width: 130px;
+  }
+  #life-container .img__life {
+    width: 25px;
+    max-width: 25px;
+  }
+  #category-container {
+    font-size: 1.5rem;
+  }
   #card-game {
     margin: 3% 20%;
   }
+  #question-container {
+    font-size: 1.5rem;
+  }
   #answer-buttons-container {
     width: 100%;
+    font-size: 1.5rem;
   }
   #footer-mobile {
     display: none;
@@ -687,7 +737,8 @@ html {
   font-size: 16px;
   /* background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
   background-size: cover; */
-  background: #26213d;
+  /* background: #26213d; */
+  background: #18212b;
   box-shadow: 0.5;
   opacity: 0.9;
   text-align: center;
@@ -791,7 +842,7 @@ html {
   /* background: url(../Image/Background/abtracto9.jpg) center;
   background-repeat: no-repeat;
   background-size: cover; */
-  background: #26213d;
+  background: #18212b;
   color: #fff;
   line-height: 1.5;
   font-family: -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, "Segoe UI", Roboto, sans-serif;
@@ -832,18 +883,13 @@ html {
   height: 100%;
   max-height: 100%;
   /* background: #26213d; */
-  background: #26213d;
+  background: #18212b;
   padding-bottom: 3%;
 }
 #body-gamePlay #life-container {
-  width: -moz-max-content;
-  width: max-content;
-  max-width: 10%;
+  align-items: center;
   border: 2px solid #FF6B6B;
   border-radius: 3px;
-  height: -moz-max-content;
-  height: max-content;
-  /* background: $ColorLetraL; */
   text-align: center;
   font-weight: bold;
   font-size: 0.8rem;
@@ -852,17 +898,13 @@ html {
   background: #FF6B6B;
 }
 #body-gamePlay #life-container .life__text {
-  padding: 2%;
+  padding: 5%;
   text-align: center;
   background: #FF6B6B;
-  /* border-radius: 10px; */
-}
-#body-gamePlay #life-container .img__life {
-  width: 30%;
 }
 
 #card-game {
-  border-radius: 10px solid #26213d;
+  border-radius: 10px solid #18212b;
 }
 #card-game #body-juegos {
   width: 100%;
@@ -870,7 +912,8 @@ html {
   /* position: absolute 0% 20%; */
   height: -moz-max-content;
   height: max-content;
-  background: rgba(8, 66, 152, 0.3294117647);
+  /* background: #08429854; */
+  background: rgba(25, 135, 84, 0.0705882353);
   text-align: center;
   /* background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
   background-size: cover; */
@@ -1023,9 +1066,8 @@ html {
   padding: 10px;
 }
 #playRoom #category-container {
-  width: 100%;
+  width: 90%;
   padding: 2%;
-  font-size: 1.5rem;
   font-weight: bold;
   letter-spacing: 0.1rem;
   background: #FF6B6B;
@@ -1037,9 +1079,8 @@ html {
 #playRoom #question-container {
   background: #FFE766;
   /* background-color: #ffd900; */
-  width: 100%;
+  width: 90%;
   font-weight: bold;
-  font-size: 1.5rem;
   border-radius: 10px;
   padding: 3%;
   margin-bottom: 20px;
@@ -1054,7 +1095,6 @@ html {
   background-color: rgba(249, 249, 249, 0.9450980392);
   border-radius: 5px;
   border: none;
-  font-size: 16px;
   cursor: pointer;
 }
 #playRoom #answer-buttons-container .answer__button:hover {

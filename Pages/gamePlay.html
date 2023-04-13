@@ -46,9 +46,11 @@
           </div>
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item d-flex align-items-center mb-5">
-                <img class="user__img" src="../assets/Image/Icon-nav/perfil.jpg" alt="perfil">
-                <div class="container-fluid ms-2 d-flex flex-column align-items-start">
+              <li id="avatar-container" class="nav-item d-flex flex-row-reverse align-items-center mb-5">
+                <!-- <div id="avatar-container" class="">
+                </div> -->
+                <!-- <img class="user__img" src="../assets/Image/Icon-nav/perfil.jpg" alt="perfil"> -->
+                <div class="container-fluid d-flex flex-column align-items-start">
                   <p>Nombre Apellido</p>
                   <div class="me-2 d-flex justify-content-center align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
@@ -56,9 +58,8 @@
                       <path
                         d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
                     </svg>
-                    <a class="nav-link active" aria-current="page" href="#">Ver perfil</a>
+                    <a class="nav-link active change" aria-current="page" href="#">Cambiar Avatar</a>
                   </div>
-
                 </div>
               </li>
               <li class="nav-item dropdown d-flex mb-3">
@@ -76,11 +77,12 @@
                     Juegos
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark">
-                    <li id="nav-deportes"><a class="dropdown-item" href="./gamePlay.html">Deportes</a></li>
-                    <li id="nav-geografia"><a class="dropdown-item" href="./gamePlay.html">Geografia</a></li>
-                    <li id="nav-historia"><a class="dropdown-item" href="./gamePlay.html">Historia</a></li>
-                    <li id="nav-programacion"><a class="dropdown-item" href="./gamePlay.html">Programacion</a></li>
-                    <li id="nav-aleatorio"><a class="dropdown-item" href="./gamePlay.html">Aleatorio</a></li>
+                    <li id="nav-deportes"><a class="dropdown-item mb-3" href="./gamePlay.html">Deportes</a></li>
+                    <li id="nav-geografia"><a class="dropdown-item mb-3" href="./gamePlay.html">Geografia</a></li>
+                    <li id="nav-historia"><a class="dropdown-item mb-3" href="./gamePlay.html">Historia</a></li>
+                    <li id="nav-programacion"><a class="dropdown-item mb-3" href="./gamePlay.html">Programacion</a></li>
+                    <li id="nav-vehiculos"><a class="dropdown-item mb-3" href="./gamePlay.html">Vehiculos</a></li>
+                    <li id="nav-aleatorio"><a class="dropdown-item " href="./gamePlay.html">Aleatorio</a></li>
                     <!-- <li>
                       <hr class="dropdown-divider">
                     </li>
@@ -135,22 +137,24 @@
       </div>
     </nav>
   </header>
-
-  <div id="life-container" class="text-center">
-    <div class="life__text text-light">
-      <p id="life">Vidas</p>
+  <section class="d-flex align-items-center justify-content-center">
+    <div id="life-container" class="text-center d-flex align-items-center">
+      <div class="life__text text-light">
+        <p id="life">Vidas</p>
+      </div>
+      <div class="life__icon life__1">
+        <img class="img__life " src="../assets/Image/Icon-nav/life.png" alt="life">
+      </div>
+      <div class="life__icon life__2">
+        <img class="img__life " src="../assets/Image/Icon-nav/life.png" alt="life">
+      </div>
+      <div class="life__icon life__3">
+        <img class="img__life " src="../assets/Image/Icon-nav/life.png" alt="life">
+      </div>
+      
     </div>
-    <div class="life__icon life__1">
-      <img class="img__life" src="../assets/Image/Icon-nav/life.png" alt="life">
-    </div>
-    <div class="life__icon life__2">
-      <img class="img__life" src="../assets/Image/Icon-nav/life.png" alt="life">
-    </div>
-    <div class="life__icon life__3">
-      <img class="img__life" src="../assets/Image/Icon-nav/life.png" alt="life">
-    </div>
-    
-  </div>
+  </section>
+  
 
   <main id="card-game">
     <main id="body-juegos">
@@ -249,10 +253,9 @@
   </footer>
 
   <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-    crossorigin="anonymous"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " ></script> 
   <script type="module" src="../assets/Script/gamePlay.js"></script>
 </body>
 
