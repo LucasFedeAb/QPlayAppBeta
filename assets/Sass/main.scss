@@ -17,14 +17,25 @@ html {
 }
 
 
-#body-index {
+.body-index-major {
     width: 100%;
     height: 100%;
     font-family: Arial, sans-serif;
     font-size: $base-font-size;
-    /* background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
-    background-size: cover; */
-    /* background: #26213d; */
+    background: #18212b;
+    box-shadow: 0.5;
+    opacity: 0.9;
+    text-align: center;
+}
+
+.body-index-register {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: $base-font-size;
     background: #18212b;
     box-shadow: 0.5;
     opacity: 0.9;
@@ -292,89 +303,39 @@ html {
     }
 }
 
-/* #line {
-    margin: 0% 25%;
-    background-color: yellowgreen;
-} */
 #time-line{
     width: 100%;
-    /* display: grid;
-    grid-template-columns: 1fr 8fr 1fr;
-    grid-template-rows: 1fr; */
-    height: 21px;
+    height: 26px;
 }
 
-/* #null{
-    grid-column: 1/2;
-    grid-row: 1/2;
-} */
 
 .countdown-line {
-    /* grid-column: 2/3;
-    grid-row: 1/2; */
-    /* background:$colorFluor; */
+    
     width: 100%;
-    height: 21px;
-    padding: 1%;
-    /* border-radius: 10px; */
-    /* border-bottom: 1px solid yellowgreen; */
+    height: 26px;
     position: relative;
     overflow: hidden;
 }
 
 .countdown-line::after {
     content: "";
-    height: 21px;
+    height: 26px;
     position: absolute;
     background-color: $colorFluor;
     top: 0;
-    left: 0;
+    right: 0;
     animation: countdown 15s linear;
     @keyframes countdown {
         from {
-            width: 0%;
+            width: 100%;
         }
     
         to {
-            width: 100%;
+            width: 0%;
         }
     }
 }
 
-/* #nulo{
-    grid-column: 3/4;
-    grid-row: 1/2;
-} */
-  
-
-/* #line {
-    background-color: black;
-    animation-name: countdown;
-    animation-duration: 15s;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
-
-    @keyframes countdown {
-        from {
-            width: 100%;
-        }
-    
-        to {
-            width: 0%;
-        }
-    }
-} */
-
-
-
-/* .time__line{
-    margin: 0% 5%;
-    text-align: center;
-    height: 7px;
-    bottom: 0px;
-    left: 0px;
-    background: yellowgreen;
-} */
 #playRoom {
 
     #quiz-container {
@@ -520,6 +481,174 @@ html {
         }
 
     }
+}
+
+/* Login */
+
+#card-login{
+    width: 98%;
+    max-width: 500px;
+    height: max-content;
+    margin: 0 auto;
+    background-color: whitesmoke;
+    /* padding: 20px; */
+    border-radius: 10px;
+    text-align: center;
+
+    #icon__login{
+        text-align: center;
+        background: #18212b;
+        box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+        /* border-top-right-radius: 10px;
+        border-top-left-radius: 10px; */
+        width: 100%;
+        .img-icon__login{
+            width: 15%;
+            height: 10%;
+        }
+        .letra__q {
+           color: $ColorLetraQ;
+           letter-spacing: 1.5rem;
+        }
+        .letra__p {
+           color: $ColorLetraP;
+        }
+        .letra__l {
+           color: $ColorLetraL;
+        }
+        .letra__a {
+           color: $ColorLetraA;
+        }
+        .letra__y {
+            color: $ColorLetraY;
+        }
+        .link__index{
+            text-decoration: none;
+        }
+    }
+
+    #form__login{
+        text-align: left;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .title__login {
+            font-size:2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .label__login {
+            display: inline-block;
+            text-align: left;
+            margin-bottom: 5px;
+            color:#808080db;
+        }
+
+        .input__register{
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+            border: whitesmoke;
+            background: whitesmoke;
+            &:focus{
+                outline: unset;
+            }
+        }  
+        
+        .input__name:focus{
+            border-bottom:#007bff solid 3px;
+        }
+            
+        .input__alias:hover {
+            border-bottom:#007bff solid 3px;
+        }
+
+        .input__complete{
+            background: #d4edda;
+        }
+
+        #btn__ingresar{
+            text-align: center;
+            .input__submit {
+                text-align: center;
+                padding: 15px 20px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease-in-out;
+                margin: 5% 0% 10% 0%;
+    
+                &:hover{
+                    background-color: #0062cc;
+                }
+            }
+        }
+
+    }
+    
+
+    #register{
+        display: flex;
+        justify-content: center;
+        gap:20px;
+        padding: 2%;
+        .newUser{
+            text-decoration: none;
+        }
+    }
+
+    #pass__remember{
+        margin: 15px 0px;
+        & a{
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+    }
+
+    
+
+    #register__redSocial{
+        padding: 1%;
+        text-align: center;
+        margin-bottom: 5%;
+
+        .input__google{
+            width: 100%;
+            border-radius: 25px;
+            border: #8080805e solid 1px;
+            color:#808080cc;
+            margin: 10px 0 10px 0;
+            background-color: white;
+            text-decoration: none;
+            padding: 5%;
+            &:hover{
+                color:#808080db;
+            }
+            
+        }
+
+        .input__facebook{
+            width: 100%;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            /* background-color: #007bff; */
+            background-color: #0c91ed;
+            text-decoration: none;
+            padding: 5%;
+            &:hover{
+                color: white;
+            }
+        }
+
+    }
+
+}
+
+.d__none{
+    display: none;
 }
 
 /* Tutorial */

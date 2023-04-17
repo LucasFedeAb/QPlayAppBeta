@@ -68,9 +68,18 @@ table {
 #navbar__inline .span__login-toggler {
   font-size: 0.8rem;
 }
+#navbar__inline .btn__avatar {
+  border-radius: 10px;
+  border: none;
+  padding: 4%;
+  font-weight: 500;
+}
+#navbar__inline .btn__avatar:active {
+  padding: 2%;
+}
 #navbar__inline .user__img {
-  background: #f3f3f3;
-  border-radius: 100%;
+  border-radius: 50%;
+  width: 75px;
 }
 #navbar__inline .link__index {
   text-decoration: none;
@@ -730,14 +739,25 @@ html {
   font-family: sans-serif;
 }
 
-#body-index {
+.body-index-major {
   width: 100%;
   height: 100%;
   font-family: Arial, sans-serif;
   font-size: 16px;
-  /* background: url(../Image/Background/abtracto9.jpg) no-repeat center center;
-  background-size: cover; */
-  /* background: #26213d; */
+  background: #18212b;
+  box-shadow: 0.5;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.body-index-register {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
   background: #18212b;
   box-shadow: 0.5;
   opacity: 0.9;
@@ -955,82 +975,36 @@ html {
   display: none;
 }
 
-/* #line {
-    margin: 0% 25%;
-    background-color: yellowgreen;
-} */
 #time-line {
   width: 100%;
-  /* display: grid;
-  grid-template-columns: 1fr 8fr 1fr;
-  grid-template-rows: 1fr; */
-  height: 21px;
+  height: 26px;
 }
 
-/* #null{
-    grid-column: 1/2;
-    grid-row: 1/2;
-} */
 .countdown-line {
-  /* grid-column: 2/3;
-  grid-row: 1/2; */
-  /* background:$colorFluor; */
   width: 100%;
-  height: 21px;
-  padding: 1%;
-  /* border-radius: 10px; */
-  /* border-bottom: 1px solid yellowgreen; */
+  height: 26px;
   position: relative;
   overflow: hidden;
 }
 
 .countdown-line::after {
   content: "";
-  height: 21px;
+  height: 26px;
   position: absolute;
   background-color: #C9FFA5;
   top: 0;
-  left: 0;
+  right: 0;
   animation: countdown 15s linear;
 }
 @keyframes countdown {
   from {
-    width: 0%;
+    width: 100%;
   }
   to {
-    width: 100%;
+    width: 0%;
   }
 }
 
-/* #nulo{
-    grid-column: 3/4;
-    grid-row: 1/2;
-} */
-/* #line {
-    background-color: black;
-    animation-name: countdown;
-    animation-duration: 15s;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
-
-    @keyframes countdown {
-        from {
-            width: 100%;
-        }
-
-        to {
-            width: 0%;
-        }
-    }
-} */
-/* .time__line{
-    margin: 0% 5%;
-    text-align: center;
-    height: 7px;
-    bottom: 0px;
-    left: 0px;
-    background: yellowgreen;
-} */
 #playRoom #quiz-container {
   display: flex;
   flex-direction: column;
@@ -1153,6 +1127,153 @@ html {
   background: #C9FFA5;
   font-weight: bold;
   font-size: 2rem;
+}
+
+/* Login */
+#card-login {
+  width: 98%;
+  max-width: 500px;
+  height: -moz-max-content;
+  height: max-content;
+  margin: 0 auto;
+  background-color: whitesmoke;
+  /* padding: 20px; */
+  border-radius: 10px;
+  text-align: center;
+}
+#card-login #icon__login {
+  text-align: center;
+  background: #18212b;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+  /* border-top-right-radius: 10px;
+  border-top-left-radius: 10px; */
+  width: 100%;
+}
+#card-login #icon__login .img-icon__login {
+  width: 15%;
+  height: 10%;
+}
+#card-login #icon__login .letra__q {
+  color: #C9FFA5;
+  letter-spacing: 1.5rem;
+}
+#card-login #icon__login .letra__p {
+  color: #FFE766;
+}
+#card-login #icon__login .letra__l {
+  color: #FF6B6B;
+}
+#card-login #icon__login .letra__a {
+  color: #FFE766;
+}
+#card-login #icon__login .letra__y {
+  color: #C9FFA5;
+}
+#card-login #icon__login .link__index {
+  text-decoration: none;
+}
+#card-login #form__login {
+  text-align: left;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#card-login #form__login .title__login {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+#card-login #form__login .label__login {
+  display: inline-block;
+  text-align: left;
+  margin-bottom: 5px;
+  color: rgba(128, 128, 128, 0.8588235294);
+}
+#card-login #form__login .input__register {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  border: whitesmoke;
+  background: whitesmoke;
+}
+#card-login #form__login .input__register:focus {
+  outline: unset;
+}
+#card-login #form__login .input__name:focus {
+  border-bottom: #007bff solid 3px;
+}
+#card-login #form__login .input__alias:hover {
+  border-bottom: #007bff solid 3px;
+}
+#card-login #form__login .input__complete {
+  background: #d4edda;
+}
+#card-login #form__login #btn__ingresar {
+  text-align: center;
+}
+#card-login #form__login #btn__ingresar .input__submit {
+  text-align: center;
+  padding: 15px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin: 5% 0% 10% 0%;
+}
+#card-login #form__login #btn__ingresar .input__submit:hover {
+  background-color: #0062cc;
+}
+#card-login #register {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 2%;
+}
+#card-login #register .newUser {
+  text-decoration: none;
+}
+#card-login #pass__remember {
+  margin: 15px 0px;
+}
+#card-login #pass__remember a {
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+#card-login #register__redSocial {
+  padding: 1%;
+  text-align: center;
+  margin-bottom: 5%;
+}
+#card-login #register__redSocial .input__google {
+  width: 100%;
+  border-radius: 25px;
+  border: rgba(128, 128, 128, 0.368627451) solid 1px;
+  color: rgba(128, 128, 128, 0.8);
+  margin: 10px 0 10px 0;
+  background-color: white;
+  text-decoration: none;
+  padding: 5%;
+}
+#card-login #register__redSocial .input__google:hover {
+  color: rgba(128, 128, 128, 0.8588235294);
+}
+#card-login #register__redSocial .input__facebook {
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  /* background-color: #007bff; */
+  background-color: #0c91ed;
+  text-decoration: none;
+  padding: 5%;
+}
+#card-login #register__redSocial .input__facebook:hover {
+  color: white;
+}
+
+.d__none {
+  display: none;
 }
 
 /* Tutorial */

@@ -5,9 +5,11 @@ import { geography, history, sports, devs, } from './questions.js';
 /* Recuperamos variables almacenadas en storage*/
 let categorySelect = localStorage.getItem('categorySelect');
 let categorySelectNav = localStorage.getItem('categorySelectNav');
+let nameNav = localStorage.getItem('Alias');
 let SelectNavGame
 let categoryDefault
 let userId
+//localStorage.removeItem('userId');
 
 //variables
 let answerCategory; //almacenar array a barajar
@@ -17,7 +19,7 @@ let isAnswered = false;
 let getScore = 0;
 let life = 3;
 let timer;
-let alias;
+let avatarImg;
 
 /* let counterLine;
 
@@ -42,8 +44,18 @@ const timerText = document.querySelector("#timer-text");
 const lifeContainer = document.querySelector("#life-container");
 const timeLine = document.querySelector('.time__line');
 const line = document.getElementById("line");
-const avatar = document.getElementById("avatar-container");
+const avatarContainer = document.getElementById("avatar-container");
+const changeAvatar = document.querySelector('.btn__avatar');
+const nameUser = document.querySelector('#nombre-user');
 /* const lifeIcon = document.querySelector('.life__icon'); */
+nameUser.innerHTML=`
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+  class="bi bi-person text-secondary" viewBox="0 0 20 20">
+  <path
+    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+</svg>
+<p>Alias: ${nameNav}</p>
+`;
 
 
 /* Funcion asignar valor string */
@@ -74,10 +86,6 @@ addCategory(sports, "DEPORTES");
 addCategory(history, "HISTORIA");
 addCategory(devs, "PROGRAMACION");
 /* addCategory(vehicles, "VEHICULOS"); */
-
-//let cars
-
-
 
 //Creamos array todas las categorias
 const allCategory = geography.concat(sports, history, devs);
@@ -263,7 +271,6 @@ function showQuestion() {
 // establecer el tiempo inicial
 function startTimer() {
     let time = 14;
-    /* startTimerLine(15); */
     // actualizar el temporizador cada segundo
     timer = setInterval(function () {
         // restablecer el temporizador si se acaba el tiempo
@@ -342,56 +349,7 @@ function showScore() {
     scoreFin.classList.add("scoreFin");
     scoreFin.innerText = scoreText;
 
-    swal({
-        title: "Desea abandonar la partida?",
-        text: "Si abandona la partida perdera el progreso!",
-        //icon: "question ",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-          swal("Poof! Your imaginary file has been deleted!", {
-            icon: "success",
-          });
-        } else {
-          swal("Your imaginary file is safe!");
-        }
-      });
-
 }
-
-//const avatar = document.querySelector('#avatar');
-
-// Función para generar un avatar Adorable Avatars
-/* function getAdorableAvatar(seed) {
-    // URL de la API de Adorable Avatars
-    const url = `https://api.adorable.io/avatars/285/${seed}.png`;
-
-    // Enviar una solicitud GET a la API de Adorable Avatars utilizando fetch
-    fetch(url)
-        .then(response => {
-            // Comprobar si la respuesta es exitosa
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            // Convertir la respuesta a un archivo de imagen
-            return response.blob();
-        })
-        .then(blob => {
-            // Crear un elemento de imagen en la página web y establecer su atributo src en el archivo de imagen devuelto por la API
-            const avatarImage = document.createElement('img').classList.add('user__img');
-            avatarImage.src = URL.createObjectURL(blob);
-            avatar.appendChild(avatarImage);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
-
-// Ejemplo de cómo usar la función getAdorableAvatar
-const seed = 'lucasfedeab'; // Se podría usar cualquier valor único para cada usuario
-getAdorableAvatar(seed); */
 
 function generateUserId() {
     userId = localStorage.getItem('userId');
@@ -399,63 +357,158 @@ function generateUserId() {
       // Si el identificador único no está almacenado en el localStorage, se genera uno nuevo
       userId = Date.now().toString(36) + Math.random().toString(36).substring(2, 5);
       localStorage.setItem('userId', userId);
-      
     }
     return userId;
 }
 generateUserId();
 
-/* let id = userId;
-localStorage.setItem('id', id);
+async function createAvatar(username) {
+    const url = `https://avatars.dicebear.com/api/bottts/${username}.svg`;
 
-let idUser
-idUser = localStorage.getItem('id');
-localStorage.setItem('idUser', idUser);
-idUser = localStorage.getItem('userId');
-console.log(id);
-console.log(idUser); */
+    try {
+        const response = await fetch(url);
+        const svg = await response.text();
+        
+        avatarImg = document.createElement("img");
+        avatarImg.setAttribute('class', 'user__img bg-light me-3');
+        avatarImg.setAttribute("src", `data:image/svg+xml,${encodeURIComponent(svg)}`);
+        avatarImg.setAttribute("alt", `Avatar for ${username}`);
+        avatarContainer.appendChild(avatarImg);
+    } catch (error) {
+        console.error("Error al obtener el avatar:", error);
+    }
+}
+createAvatar(userId);
 
-/* localStorage.removeItem('userId'); */
 
-console.log(userId);
-const changeavatar = document.querySelector('.change');
-let avatarElement
-function createAvatar(username) {
-    //const url = `https://avatars.dicebear.com/api/avataaars/${username}.svg`;
+/* function createAvatar(username) {
     const url = `https://avatars.dicebear.com/api/bottts/${username}.svg`;
 
     fetch(url)
         
         .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            console.log(response);
             return response.text();
+            
         })
         .then(svg => {
-            avatarElement = document.createElement("img");
-            avatarElement.setAttribute('class', 'user__img w-25 me-3');
-            avatarElement.setAttribute("src", `data:image/svg+xml,${encodeURIComponent(svg)}`);
-            avatarElement.setAttribute("alt", `Avatar for ${username}`);
-            avatar.appendChild(avatarElement);
+            avatarImg = document.createElement("img");
+            avatarImg.setAttribute('class', 'user__img w-25 me-3');
+            avatarImg.setAttribute("src", `data:image/svg+xml,${encodeURIComponent(svg)}`);
+            avatarImg.setAttribute("alt", `Avatar for ${username}`);
+            avatarContainer.appendChild(avatarImg);
         })
         .catch(error => {
             console.error("Error fetching avatar:", error);
         });
 }
+createAvatar(userId); */
+
+/* Swal.fire({
+    title: 'Ingrese su nombre',
+    input: 'text',
+    inputAttributes: {
+        autocapitalize: 'off'
+    },
+    showCancelButton: true,
+    confirmButtonText: 'Aceptar',
+    showLoaderOnConfirm: true,
+    preConfirm: (name) => {
+        return fetch(`https://avatars.dicebear.com/api/bottts/${name}.svg`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .catch(error => {
+                console.error('Error fetching avatar:', error);
+                Swal.showValidationMessage(`No se pudo cargar el avatar`);
+            });
+    },
+    allowOutsideClick: () => !Swal.isLoading(),
+    html: '<img id="avatar-img" class="user__img w-25 me-3" />',
+    didRender: () => {
+        const avatarImg = document.getElementById('avatar-img');
+        const username = Swal.getInput().value;
+        const url = `https://avatars.dicebear.com/api/bottts/${username}.svg`;
+        avatarImg.src = `data:image/svg+xml,${encodeURIComponent(url)}`;
+    }
+}); */
 
 
-/* const username = 'asd'; */
-createAvatar(userId);
 
-changeavatar.addEventListener("click", function () { 
+
+/* const container = document.getElementById("avatar-container");
+let avatarList;
+//localStorage.removeItem('userId');
+function listarAvatar(username) {
+    const categories = ["bottts"];
+    const url = `https://avatars.dicebear.com/api/bottts/${username}.svg`;
+
+    fetch(url)
+
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            console.log(response);
+            console.log(response);
+            return response.text();
+
+        })
+        .then(categories => {
+            categories.forEach(category => {
+                for (let i = 0; i < 100; i++) {
+                    const username = `${category}-${i}`;
+                    const url = `https://avatars.dicebear.com/api/${categories}/${username}.svg`;
+                    avatarList = document.createElement("img");
+                    avatarList.setAttribute('class', 'user__img me-3');
+                    avatarList.setAttribute("src", url);
+                    avatarList.setAttribute("alt", `Avatar for ${username}`);
+                    container.appendChild(avatarList);
+                }
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching avatar:", error);
+        });
+} */
+
+
+/* const containerAvatar = document.createElement('<div id="container-avatar"></div>');
+const innerAvatar = document.querySelector('#container-avatar');
+ */
+
+/* swal({
+    title: "Desea abandonar la partida?",
+    text: "Si abandona la partida perdera el progreso!",
+    icon: "question ",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      swal("Poof! Your imaginary file has been deleted!", {
+        icon: "success",
+      });
+    } else {
+      swal("Your imaginary file is safe!");
+    }
+});
+ */
+
+//const username = 'asd';
+//createAvatar(userId);
+
+changeAvatar.addEventListener("click", function () { 
     localStorage.removeItem('userId');
     generateUserId();
-    avatarElement.remove();
+    avatarImg.remove();
     createAvatar(userId);
 });
+
 /* createAvatar(username); */
+
 
 // iniciar la prueba al cargar la página
 showQuestion();
