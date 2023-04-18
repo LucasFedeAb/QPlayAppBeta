@@ -9,11 +9,11 @@ class Category {
 }
 
 const categorys=[
-    new Category ("Geografia","./gamePlay.html","geocop.jpeg"),
-    new Category ("Deportes","./gamePlay.html","sports.jpg"),
-    new Category ("Historia","./gamePlay.html","history.jpg"),
-    new Category ("Programacion","./gamePlay.html","devs.jpg"),
-    new Category ("Aleatorio","./gamePlay.html","all.jpg"),
+    new Category ("Geografia","./gamePlay.html","geopng.png"),
+    new Category ("Deportes","./gamePlay.html","sports.png"),
+    new Category ("Historia","./gamePlay.html","history.png"),
+    new Category ("Programacion","./gamePlay.html","prog.png"),
+    new Category ("Aleatorio","./gamePlay.html","aleatoria.png"),
 ]
 
 
@@ -35,11 +35,21 @@ categorys.forEach(category=>{
 let categoria = document.querySelector('#categoria');
 categorys.forEach(category=>{
     categoria.innerHTML +=`
+    <swiper-slide>
+        <a class="text-center" href="${category.href}"> <img class="bg-image" src="${category.img}" alt="${category.nombre}"></a>
+    </swiper-slide>`
+    
+})
+
+/* let categoria = document.querySelector('#categoria');
+categorys.forEach(category=>{
+    categoria.innerHTML +=`
+    
     <div class="swiper-slide">
         <a class="text-center" href="${category.href}"> <img class="bg-image" src="${category.img}" alt="${category.nombre}"></a>
         <img class="logo-image logo-image-1" data-swiper-parallax-x="50%" src="./images/guardians-of-the-galaxy-logo.png" alt="">
     </div>`
-})
+}) */
 
 /* let nameCategory = document.querySelector('#container-category-name')
 categorys.forEach(category=>{
@@ -143,23 +153,43 @@ function selectAvatar() {
 changeAvatar.addEventListener("click", function () {selectAvatar();});
 
 let maxScore = JSON.parse(localStorage.getItem('maxScore')) || {score: 0, category: ''};
+console.log(maxScore.category);
 function showStatistics() {
-    Swal.fire({
-        background:"#C9FFA5",
-        title:"MEJOR PUNTUACIÓN",
-        html: 
-        `<strong>El mejor puntaje es ${maxScore.score} en la categoria ${maxScore.category}</strong>`,
-        /* html: 
-        `<strong>El mejor puntaje es ${maxScoreData.score} en la categoría ${maxScoreData.category}</strong>`, */
-        showCloseButton: true,
-        showConfirmButton: false,
-        showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-        },
-        hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-        }
-    });
+    console.log(maxScore);
+    if (maxScore.category==="") {
+        Swal.fire({
+            background:"#C9FFA5",
+            title:"MEJOR PUNTUACIÓN",
+            html: 
+            `<strong>Aun no hay puntajes registrados. Comienza a jugar para registrar puentajes y superarlos !!</strong>`,
+            showCloseButton: true,
+            showConfirmButton: false,
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        })
+    }else{
+        Swal.fire({
+            background:"#C9FFA5",
+            title:"MEJOR PUNTUACIÓN",
+            html: 
+            `<strong>El mejor puntaje es ${maxScore.score} en la categoria ${maxScore.category}</strong>`,
+            /* html: 
+            `<strong>El mejor puntaje es ${maxScoreData.score} en la categoría ${maxScoreData.category}</strong>`, */
+            showCloseButton: true,
+            showConfirmButton: false,
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        });
+    }
+    
 }
 
 statistics.addEventListener("click", function () {showStatistics();

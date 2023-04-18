@@ -115,18 +115,13 @@
           class="letra__l">A</span><span class="letra__q">S</span></h1>
     </div>
 
-    <div id="app">
-      <!-- Triple slider -->
-      <div class="triple-slider">
-        <!-- Duplicate swipers will be created automatically -->
+    <swiper-container id="categoria" class="mySwiper" pagination="true" navigation="true" effect="cube" grab-cursor="true" cube-effect-shadow="false"
+      cube-effect-slide-shadows="true" cube-effect-shadow-offset="0" cube-effect-shadow-scale="0" loop="true">
+      
+      </swiper-slide>
+    </swiper-container>
 
-        <!-- Main center swiper -->
-        <div class="swiper">
-          <div class="swiper-wrapper" id="categoria">
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
   </main>
 
@@ -169,8 +164,9 @@
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
   <script type="module" src="../assets/Script/categorys.js"></script>
-  <script type="module" crossorigin src="../assets/Script/SliderCategory/index.aa889a95.js"></script>
+  <!-- <script type="module" crossorigin src="../assets/Script/SliderCategory/index.aa889a95.js"></script> -->
   
 </body>
 

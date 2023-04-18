@@ -21,7 +21,7 @@ let timer;
 let getScore = 0;
 let maxScore = 0;
 let maxScoreData = null;
-let maxScoreCategory="";
+
 
 /* let counterLine;
 
@@ -76,16 +76,15 @@ const addCategory = (array, nameCategory) => {
         elemento.category = nameCategory;
     }
 }
-//Creamos array todas las categorias
-const allCategory = geography.concat(sports, history, devs);
+
 
 addCategory(geography, "GEOGRAFIA");
 addCategory(sports, "DEPORTES");
 addCategory(history, "HISTORIA");
 addCategory(devs, "PROGRAMACION");
-addCategory(allCategory, "ALEATORIA");
-/* addCategory(vehicles, "VEHICULOS"); */
 
+//Creamos array todas las categorias
+const allCategory = geography.concat(sports, history, devs);
 
 
 /* Funcion para acceder a array segun click categorias  */
@@ -165,6 +164,8 @@ function saveMaxScore(maxScoreData) {
 // función para actualizar el puntaje máximo si es necesario
 function updateMaxScore(score, category) {
     maxScore = JSON.parse(localStorage.getItem('maxScore')) || {score: 0, category: ''}; // obtiene el puntaje máximo del localStorage o lo inicializa a 0 y una categoría vacía si no hay uno guardado
+    
+    
     if (score > maxScore.score) {
         maxScoreData = { score, category };
         saveMaxScore(maxScoreData);
@@ -366,6 +367,10 @@ function showScore() {
         
         
     }
+    if (answerCategory===allCategory) {
+        answerCategory[currentQuestion].category = "ALEATORIA";
+    }
+    
     updateMaxScore(score, answerCategory[currentQuestion].category);
     showMaxScore();
     let scoreText = `SCORE FINAL: ${score}`;
@@ -573,20 +578,39 @@ const innerAvatar = document.querySelector('#container-avatar');
 //createAvatar(userId);
 /* let maxScore = JSON.parse(localStorage.getItem('maxScore')) || {score: 0, category: ''}; */
 function showStatistics() {
-    Swal.fire({
-        background:"#C9FFA5",
-        title:"MEJOR PUNTUACIÓN",
-        html: 
-        `<strong>El mejor puntaje es ${maxScoreData.score} en la categoría ${maxScoreData.category}</strong>`,
-        showCloseButton: true,
-        showConfirmButton: false,
-        showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-        },
-        hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-        }
-    });
+    
+    if (!maxScoreData) {
+        Swal.fire({
+            background:"#C9FFA5",
+            title:"MEJOR PUNTUACIÓN",
+            html: 
+            `<strong>Aun no hay puntajes registrados. Comienza a jugar para registrar puentajes y superarlos !!</strong>`,
+            showCloseButton: true,
+            showConfirmButton: false,
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        })
+    }else{
+        Swal.fire({
+            background:"#C9FFA5",
+            title:"MEJOR PUNTUACIÓN",
+            html: 
+            `<strong>El mejor puntaje es ${maxScoreData.score} en la categoría ${maxScoreData.category}</strong>`,
+            showCloseButton: true,
+            showConfirmButton: false,
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        });
+    }
+    
 }
 
 statistics.addEventListener("click", function () {showStatistics();
