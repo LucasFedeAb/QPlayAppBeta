@@ -150,7 +150,7 @@ table {
 .container__foot .menu__foot .line {
   position: absolute;
   height: 5px;
-  width: 20%;
+  width: 33%;
   background: white;
   left: 40%;
   top: 0;
@@ -160,50 +160,22 @@ table {
 
 .container__foot .menu__foot li:nth-child(1):hover ~ .line {
   left: 0%;
-  display: block;
 }
 
 .container__foot .menu__foot li:nth-child(2):hover ~ .line {
-  left: 20%;
-  display: block;
+  left: 33.3%;
 }
 
 .container__foot .menu__foot li:nth-child(3):hover ~ .line {
-  left: 40%;
-  display: none;
+  left: 66.6%;
 }
 
-.container__foot .menu__foot li:nth-child(4):hover ~ .line {
-  left: 60%;
-  display: block;
+.icon__foot {
+  width: 25px;
 }
 
-.container__foot .menu__foot li:nth-child(5):hover ~ .line {
-  left: 80%;
-  display: block;
-}
-
-/* .img__icon__foot{
-    width: 60px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    margin-bottom: 2px;
-} */
-/* .icon__home{
-    color: $ColorLetraL;
-    font-size: 45px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    margin-bottom: 20px;
-} */
 .icon__home {
-  font-size: 35px;
+  font-size: 30px;
   color: #C9FFA5;
 }
 
@@ -739,23 +711,9 @@ html {
   font-family: sans-serif;
 }
 
-.body-index-major {
+#body-index {
   width: 100%;
   height: 100%;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  background: #18212b;
-  box-shadow: 0.5;
-  opacity: 0.9;
-  text-align: center;
-}
-
-.body-index-register {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-family: Arial, sans-serif;
   font-size: 16px;
   background: #18212b;
@@ -1176,6 +1134,13 @@ html {
   text-align: left;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* #nameInput{
+      border-bottom:#007bff solid 3px;
+  }
+
+  .input__alias:focus {
+      border-bottom:#007bff solid 3px;
+  } */
 }
 #card-login #form__login .title__login {
   font-size: 2rem;
@@ -1188,24 +1153,19 @@ html {
   margin-bottom: 5px;
   color: rgba(128, 128, 128, 0.8588235294);
 }
+#card-login #form__login .input__complete {
+  background: #d4edda;
+}
 #card-login #form__login .input__register {
   padding: 10px;
   width: 100%;
   margin-bottom: 20px;
   border: whitesmoke;
   background: whitesmoke;
+  border-bottom: #007bff solid 3px;
 }
 #card-login #form__login .input__register:focus {
   outline: unset;
-}
-#card-login #form__login .input__name:focus {
-  border-bottom: #007bff solid 3px;
-}
-#card-login #form__login .input__alias:hover {
-  border-bottom: #007bff solid 3px;
-}
-#card-login #form__login .input__complete {
-  background: #d4edda;
 }
 #card-login #form__login #btn__ingresar {
   text-align: center;

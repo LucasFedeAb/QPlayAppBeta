@@ -23,8 +23,6 @@ function showRegister() {
         btnPlay.remove();
         logo.remove();
         nameGame.remove();
-        bodyIndex.classList.remove('body-index-major');
-        bodyIndex.classList.add('body-index-register');
         register.classList.remove('d__none');
     }
 }
@@ -41,9 +39,6 @@ if (existe) {
         valueAlias = inputAlias.value;
         localStorage.setItem('Nombre',valueName)
         localStorage.setItem('Alias',valueAlias)
-        console.log(valueName);
-        console.log(valueAlias);
-    
         if (valueName !== "" && valueAlias !== "") {
             existe=true;
             window.location.href = document.querySelector("#btn__ingresar a").href;

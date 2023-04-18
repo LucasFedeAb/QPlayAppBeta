@@ -38,7 +38,7 @@
 .container__foot .menu__foot .line {
     position:absolute;
     height: 5px;
-    width: 20%;
+    width: 33%;
     background:white;
     left: 40%;
     top: 0;
@@ -47,56 +47,23 @@
 }
 
 .container__foot .menu__foot li:nth-child(1):hover~.line {
-    
     left: 0%;
-    display: block;
 }
 
 .container__foot .menu__foot li:nth-child(2):hover~.line {
-    
-    left: 20%;
-    display: block;
+    left: 33.3%;
 }
 
 .container__foot .menu__foot li:nth-child(3):hover~.line {
-    left:40%;
-    display: none;
+    left:66.6%;
 }
 
-.container__foot .menu__foot li:nth-child(4):hover~.line {
-    
-    left: 60%;
-    display: block;
+
+.icon__foot{
+    width: 25px;
 }
-
-.container__foot .menu__foot li:nth-child(5):hover~.line {
-
-    left: 80%;
-    display: block;
-}
-
-/* .img__icon__foot{
-    width: 60px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    margin-bottom: 2px;
-} */
-
-/* .icon__home{
-    color: $ColorLetraL;
-    font-size: 45px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    margin-bottom: 20px;
-} */
 
 .icon__home{
-    font-size: 35px;
+    font-size: 30px;
     color: $colorFluor;
 }

@@ -1,14 +1,14 @@
 /* Importamos array de preguntas y respuestas */
 import { geography, history, sports, devs, } from './questions.js';
 
-
 /* Recuperamos variables almacenadas en storage*/
 let categorySelect = localStorage.getItem('categorySelect');
 let categorySelectNav = localStorage.getItem('categorySelectNav');
-let nameNav = localStorage.getItem('Alias');
+let name = localStorage.getItem('Nombre');
+
 let SelectNavGame
 let categoryDefault
-let userId
+
 //localStorage.removeItem('userId');
 
 //variables
@@ -16,10 +16,12 @@ let answerCategory; //almacenar array a barajar
 let currentQuestion = 0; // índice de la pregunta actual
 let userAnswers = []; // array para almacenar las respuestas del usuario
 let isAnswered = false;
-let getScore = 0;
 let life = 3;
 let timer;
-let avatarImg;
+let getScore = 0;
+let maxScore = 0;
+let maxScoreData = null;
+let maxScoreCategory="";
 
 /* let counterLine;
 
@@ -44,18 +46,10 @@ const timerText = document.querySelector("#timer-text");
 const lifeContainer = document.querySelector("#life-container");
 const timeLine = document.querySelector('.time__line');
 const line = document.getElementById("line");
-const avatarContainer = document.getElementById("avatar-container");
-const changeAvatar = document.querySelector('.btn__avatar');
-const nameUser = document.querySelector('#nombre-user');
-/* const lifeIcon = document.querySelector('.life__icon'); */
-nameUser.innerHTML=`
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-  class="bi bi-person text-secondary" viewBox="0 0 20 20">
-  <path
-    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-</svg>
-<p>Alias: ${nameNav}</p>
-`;
+const statistics = document.querySelector('.statistics');
+const statisticsMobile = document.querySelector('.statistics__mobile');
+const help = document.querySelector('.help');
+const helpMobile = document.querySelector('.help__mobile');
 
 
 /* Funcion asignar valor string */
@@ -70,7 +64,8 @@ navGeography.addEventListener("click", function () { varValue("Geografia"); });
 navHistory.addEventListener("click", function () { varValue("Historia"); });
 navDevs.addEventListener("click", function () { varValue("Programacion"); });
 navAll.addEventListener("click", function () { varValue("Aleatorio"); });
-navVehiculos.addEventListener("click", function () { varValue("Vehiculos"); });
+
+
 
 /* Recuperamos informacion de click storage */
 SelectNavGame = localStorage.getItem('SelectNavGame');
@@ -81,14 +76,17 @@ const addCategory = (array, nameCategory) => {
         elemento.category = nameCategory;
     }
 }
+//Creamos array todas las categorias
+const allCategory = geography.concat(sports, history, devs);
+
 addCategory(geography, "GEOGRAFIA");
 addCategory(sports, "DEPORTES");
 addCategory(history, "HISTORIA");
 addCategory(devs, "PROGRAMACION");
+addCategory(allCategory, "ALEATORIA");
 /* addCategory(vehicles, "VEHICULOS"); */
 
-//Creamos array todas las categorias
-const allCategory = geography.concat(sports, history, devs);
+
 
 /* Funcion para acceder a array segun click categorias  */
 function clickCategory(btnCategory) {
@@ -108,9 +106,7 @@ function clickCategory(btnCategory) {
         case "Aleatorio":
             answerCategory = allCategory;
             break;
-        /* case "Vehiculos":
-            answerCategory = vehicles;
-        break; */
+       
         
     }
 }
@@ -150,6 +146,42 @@ function shuffleArray(array) {
     return array;
 }
 
+// función para guardar el puntaje máximo en el localStorage
+const maxScoreDataJSON = localStorage.getItem('maxScore');
+if (maxScoreDataJSON) {
+    const maxScoreDataParsed = JSON.parse(maxScoreDataJSON);
+    if (maxScoreDataParsed.score > maxScore) {
+        maxScore = maxScoreDataParsed.score;
+        maxScoreData = maxScoreDataParsed;
+    }
+}
+
+// función para guardar el puntaje máximo en el localStorage
+function saveMaxScore(maxScoreData) {
+    localStorage.setItem('maxScore', JSON.stringify(maxScoreData));
+} 
+
+
+// función para actualizar el puntaje máximo si es necesario
+function updateMaxScore(score, category) {
+    maxScore = JSON.parse(localStorage.getItem('maxScore')) || {score: 0, category: ''}; // obtiene el puntaje máximo del localStorage o lo inicializa a 0 y una categoría vacía si no hay uno guardado
+    if (score > maxScore.score) {
+        maxScoreData = { score, category };
+        saveMaxScore(maxScoreData);
+    }
+}
+
+// función para mostrar el puntaje máximo al usuario
+function showMaxScore() {
+    maxScoreData = JSON.parse(localStorage.getItem('maxScore')); // obtiene el puntaje máximo del localStorage
+    if (maxScoreData) {
+        console.log(`El puntaje máximo es ${maxScoreData.score} en la categoría ${maxScoreData.category}`);
+    } else {
+        console.log('Aún no hay un puntaje máximo registrado en el localStorage');
+    }
+}
+
+
 // función para verificar la respuesta del usuario
 function checkAnswer(selectedAnswer) {
     // si ya se ha respondido a la pregunta actual, no se hace nada
@@ -177,6 +209,7 @@ function checkAnswer(selectedAnswer) {
         getScore = getScore + 10;
         document.querySelector(".alert__msg").innerText = `Correcto`;
         document.querySelector(".score").innerText = `Score: ${getScore}`;
+        
 
     } else {
         life--;
@@ -192,7 +225,7 @@ function checkAnswer(selectedAnswer) {
                 document.querySelector('.life__1').remove();
             break;
         }
-
+        
         console.log(life);
         btn.classList.add("incorrect");
         textAlert.classList.add("textIncorrect");
@@ -220,7 +253,7 @@ function checkAnswer(selectedAnswer) {
         
         document.querySelector(`.btn${answerCategory[currentQuestion].correctAnswer}`).classList.remove("correct");
         // pasar a la siguiente pregunta o mostrar el puntaje final
-        //console.log(currentQuestion);
+        
         if (currentQuestion < answerCategory.length - 1 && life > 0) {
             currentQuestion++
 
@@ -242,7 +275,7 @@ function showQuestion() {
     line.classList.add("countdown-line");
     timerContainer.classList.add('div__time');
     timerText.innerText = `Tiempo: 15`;
-    /* document.querySelector("#life").innerText = life; */
+
     // mostrar la pregunta y las respuestas posibles
     showCategory.innerText = answerCategory[currentQuestion].category;
     showQuest.innerText = answerCategory[currentQuestion].question;
@@ -250,7 +283,7 @@ function showQuestion() {
     showBtn1.innerText = answerCategory[currentQuestion].answer1;
     showBtn2.innerText = answerCategory[currentQuestion].answer2;
     showBtn3.innerText = answerCategory[currentQuestion].answer3;
-
+    console.log(answerCategory[currentQuestion].category);
     // activar los botones de respuesta
 
     showBtn0.disabled = false;
@@ -319,9 +352,27 @@ function startTimer() {
         time--;
     }, 1000);
 }
+
 // función para mostrar el puntaje final
 
 function showScore() {
+    // mostrar el puntaje final
+    let score = 0;
+    for (let i = 0; i < answerCategory.length; i++) {
+        if (userAnswers[i] === answerCategory[i].correctAnswer) {
+            score = score + 10;
+            
+        }
+        
+        
+    }
+    updateMaxScore(score, answerCategory[currentQuestion].category);
+    showMaxScore();
+    let scoreText = `SCORE FINAL: ${score}`;
+    let scoreFin = document.querySelector(".score");
+    scoreFin.classList.remove(".score");
+    scoreFin.classList.add("scoreFin");
+    scoreFin.innerText = scoreText;
     // desactivar los botones de respuesta
     showBtn0.disabled = true;
     showBtn1.disabled = true;
@@ -332,53 +383,74 @@ function showScore() {
     btnAnswers.remove("#btn-answers");
     timerContainer.remove(".div__time");
     lifeContainer.remove();
-    showCategory.innerText = `Vidas:${life}`;
+    showCategory.innerText = `FIN DEL JUEGO`;
     showQuest.remove();
     document.querySelector("#question-container").remove();
+    const btnFin = document.querySelector('#btn-fin');
+    btnFin.innerHTML=`<button id="btn-ok" type="button" class="btn btn-success text-center-light btn-lg ps-4 pt-3 pb-3 pe-4 g-3 m-4 ">REINICIAR</button>
+    <button id="btn-exit" type="button" class="btn btn-danger text-center-light btn-lg ps-4 pt-3 pb-3 pe-4 g-3 m-4">SALIR</button>`;
 
-    // mostrar el puntaje final
-    let score = 0;
-    for (let i = 0; i < answerCategory.length; i++) {
-        if (userAnswers[i] === answerCategory[i].correctAnswer) {
-            score = score + 10;
-        }
-    }
-    let scoreText = `SCORE FINAL: ${score}`;
-    let scoreFin = document.querySelector(".score");
-    scoreFin.classList.remove(".score");
-    scoreFin.classList.add("scoreFin");
-    scoreFin.innerText = scoreText;
+    const btnExit = document.querySelector('#btn-exit');
+    const btnOk = document.querySelector('#btn-ok');
 
+    btnOk.addEventListener("click", function() {
+        // Aquí agregamos la acción para mantener al usuario en la misma página
+        window.location.assign("./gamePlay.html");
+    });
+    btnExit.addEventListener("click", function() {
+        window.location.assign("./categorysSlider.html");
+    });
+
+
+    Swal.fire({
+        background:"#C9FFA5",
+        title: `${scoreText}`,
+        html:`<h3>DESEA REINICIAR?</h3>,`,
+        backdrop: `#18212b`,
+        showCancelButton: true,
+        cancelButtonText:"SALIR",
+        confirmButtonColor: '#27ae60',
+        cancelButtonColor: '#c0392b',
+    });
+
+    // Agregar evento de clic al botón "OK"
+    let confirmButton = Swal.getConfirmButton();
+    confirmButton.addEventListener("click", function() {
+        // Aquí agregamos la acción para mantener al usuario en la misma página
+        window.location.assign("./gamePlay.html");
+    });
+
+    // Agregar evento de clic al botón "Cancelar"
+    let cancelButton = Swal.getCancelButton();
+    cancelButton.addEventListener("click", function() {
+        window.location.assign("./categorysSlider.html");
+    });
 }
 
-function generateUserId() {
-    userId = localStorage.getItem('userId');
-    if (!userId) {
-      // Si el identificador único no está almacenado en el localStorage, se genera uno nuevo
-      userId = Date.now().toString(36) + Math.random().toString(36).substring(2, 5);
-      localStorage.setItem('userId', userId);
-    }
-    return userId;
-}
-generateUserId();
+/* window.addEventListener('beforeunload', (event) => {
+    event.preventDefault(),
+    Swal.fire({
+        title: "Por favor, completa ambos campos",
+        backdrop: `#18212b`,
+    });
+}); */
+/* window.addEventListener('beforeunload', () => {
+    event.preventDefault();
+    Swal.fire({
+        title: "Por favor, completa ambos campos",
+        backdrop: `#18212b`,
+    });
+}); */
 
-async function createAvatar(username) {
-    const url = `https://avatars.dicebear.com/api/bottts/${username}.svg`;
 
-    try {
-        const response = await fetch(url);
-        const svg = await response.text();
-        
-        avatarImg = document.createElement("img");
-        avatarImg.setAttribute('class', 'user__img bg-light me-3');
-        avatarImg.setAttribute("src", `data:image/svg+xml,${encodeURIComponent(svg)}`);
-        avatarImg.setAttribute("alt", `Avatar for ${username}`);
-        avatarContainer.appendChild(avatarImg);
-    } catch (error) {
-        console.error("Error al obtener el avatar:", error);
-    }
-}
-createAvatar(userId);
+/* window.onbeforeunload = function(event) {
+    event.preventDefault();
+    Swal.fire({
+        title: "Por favor, completa ambos campos",
+        backdrop: `#18212b`,
+    });
+    
+}; */
 
 
 /* function createAvatar(username) {
@@ -499,17 +571,143 @@ const innerAvatar = document.querySelector('#container-avatar');
 
 //const username = 'asd';
 //createAvatar(userId);
+/* let maxScore = JSON.parse(localStorage.getItem('maxScore')) || {score: 0, category: ''}; */
+function showStatistics() {
+    Swal.fire({
+        background:"#C9FFA5",
+        title:"MEJOR PUNTUACIÓN",
+        html: 
+        `<strong>El mejor puntaje es ${maxScoreData.score} en la categoría ${maxScoreData.category}</strong>`,
+        showCloseButton: true,
+        showConfirmButton: false,
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        }
+    });
+}
 
-changeAvatar.addEventListener("click", function () { 
+statistics.addEventListener("click", function () {showStatistics();
+});
+statisticsMobile.addEventListener("click", function () {showStatistics();
+});
+
+/* let userName = localStorage.getItem('Nombre'); */
+function showHelp() {
+    Swal.fire({
+        //background:"#C9FFA5",
+        title:"CONTACTANOS",
+        text:`Hola ${name}, si necesitas ayuda o tienes alguna sugerencia contactanos a twfa.luca@gmail.com y te responderemos a la brevedad.`,
+        showCloseButton: true,
+        showConfirmButton: false,
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        }
+    });
+}
+
+help.addEventListener("click", function () {showHelp();
+});
+helpMobile.addEventListener("click", function () {showHelp();
+});
+
+/* statistics.addEventListener("click", function () {
+
+    Swal.fire({
+        background:"#C9FFA5",
+        title:"MEJOR PUNTUACIÓN",
+        html: 
+        `<strong>El mejor puntaje es ${maxScoreData.score} en la categoría ${maxScoreData.category}</strong>`,
+        showCloseButton: true,
+        showConfirmButton: false,
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        }
+    });
+});
+
+help.addEventListener("click", function () {
+
+    Swal.fire({
+        //background:"#C9FFA5",
+        title:"CONTACTANOS",
+        text:`Hola ${name}, si necesitas ayuda o tienes alguna sugerencia contactanos a twfa.luca@gmail.com y te responderemos a la brevedad.`,
+        showCloseButton: true,
+        showConfirmButton: false,
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        }
+    });
+}); */
+
+let nameNav = localStorage.getItem('Alias');
+let userId
+let avatarImg;
+const avatarContainer = document.getElementById("avatar-container");
+const changeAvatar = document.querySelector('.btn__avatar');
+const nameUser = document.querySelector('#nombre-user');
+
+nameUser.innerHTML=`
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-emoji-smile-fill mt-2 text-warning" viewBox="0 0 20 20">
+  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zM4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z"/>
+</svg>
+
+<p class="text-warning">Hola ${nameNav} !</p>
+`;
+
+export function generateUserId() {
+    userId = localStorage.getItem('userId');
+    if (!userId) {
+      // Si el identificador único no está almacenado en el localStorage, se genera uno nuevo
+      userId = Date.now().toString(36) + Math.random().toString(36).substring(2, 5);
+      localStorage.setItem('userId', userId);
+    }
+    return userId;
+}
+generateUserId();
+
+async function createAvatar(username) {
+    const url = `https://avatars.dicebear.com/api/bottts/${username}.svg`;
+
+    try {
+        const response = await fetch(url);
+        const svg = await response.text();
+        
+        avatarImg = document.createElement("img");
+        avatarImg.setAttribute('class', 'user__img bg-light me-3');
+        avatarImg.setAttribute("src", `data:image/svg+xml,${encodeURIComponent(svg)}`);
+        avatarImg.setAttribute("alt", `Avatar for ${username}`);
+        avatarContainer.appendChild(avatarImg);
+    } catch (error) {
+        console.error("Error al obtener el avatar:", error);
+    }
+}
+createAvatar(userId);
+
+
+
+function selectAvatar() {
     localStorage.removeItem('userId');
     generateUserId();
     avatarImg.remove();
     createAvatar(userId);
-});
+}
 
+changeAvatar.addEventListener("click", function () {selectAvatar();});
 /* createAvatar(username); */
 
 
 // iniciar la prueba al cargar la página
-showQuestion();
 
+showQuestion();
