@@ -1,4 +1,3 @@
-
 const bodyIndex = document.querySelector('#body-index');
 const btnPlay = document.querySelector('#button-index');
 const logo = document.querySelector('#logo-animate');
@@ -10,16 +9,21 @@ const inputSubmit = document.querySelector('.input__submit');
 const inputAlias = document.querySelector('#aliasInput');
 const inputComplete = document.querySelector('.input__register');
 
-let valueName;
-let valueAlias;
 let existe = localStorage.getItem('Nombre');
-register.classList.add('d__none');
+let users = localStorage.getItem('users');
 
+if (!users) {
+    users = [];
+} else {
+    users = JSON.parse(users);
+}
+
+register.classList.add('d__none');
 
 function showRegister() {
     if (existe) {
         window.location.href = document.querySelector("#btn__ingresar a").href;
-    }else{
+    } else {
         btnPlay.remove();
         logo.remove();
         nameGame.remove();
@@ -27,31 +31,41 @@ function showRegister() {
     }
 }
 
-
 if (existe) {
-    btnPlay.addEventListener("click", function (event) {event.preventDefault(); showRegister(); });
-}else{
-    
-    btnPlay.addEventListener("click", function (event) {event.preventDefault(); showRegister(); });
-    
+    btnPlay.addEventListener("click", function (event) { event.preventDefault(); showRegister(); });
+} else {
+    btnPlay.addEventListener("click", function (event) { event.preventDefault(); showRegister(); });
+
     function getInput() {
-        valueName = inputName.value;
-        valueAlias = inputAlias.value;
-        localStorage.setItem('Nombre',valueName)
-        localStorage.setItem('Alias',valueAlias)
+        let valueName = inputName.value;
+        let valueAlias = inputAlias.value;
+
+        let user = {
+            name: valueName,
+            alias: valueAlias
+        };
+
+        users.push(user);
+
+        localStorage.setItem('users', JSON.stringify(users));
+        localStorage.setItem('Nombre', valueName);
+        localStorage.setItem('Alias', valueAlias);
+
         if (valueName !== "" && valueAlias !== "") {
-            existe=true;
+            existe = true;
             window.location.href = document.querySelector("#btn__ingresar a").href;
-        }else{
+        } else {
             Swal.fire({
                 title: "Por favor, completa ambos campos",
                 timer: 3000,
                 backdrop: `#18212b`,
-            })
+            });
         }
     }
-    inputSubmit.addEventListener("click", function (event) {event.preventDefault(); getInput(); });
+
+    inputSubmit.addEventListener("click", function (event) { event.preventDefault(); getInput(); });
 }
+
 
 
 
