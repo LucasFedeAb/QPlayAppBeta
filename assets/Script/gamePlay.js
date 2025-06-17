@@ -9,8 +9,6 @@ let name = localStorage.getItem("Nombre");
 let SelectNavGame;
 let categoryDefault;
 
-//localStorage.removeItem('userId');
-
 //variables
 let answerCategory; //almacenar array a barajar
 let currentQuestion = 0; // índice de la pregunta actual
@@ -461,145 +459,6 @@ function showScore() {
   });
 }
 
-/* window.addEventListener('beforeunload', (event) => {
-    event.preventDefault(),
-    Swal.fire({
-        title: "Por favor, completa ambos campos",
-        backdrop: `#18212b`,
-    });
-}); */
-/* window.addEventListener('beforeunload', () => {
-    event.preventDefault();
-    Swal.fire({
-        title: "Por favor, completa ambos campos",
-        backdrop: `#18212b`,
-    });
-}); */
-
-/* window.onbeforeunload = function(event) {
-    event.preventDefault();
-    Swal.fire({
-        title: "Por favor, completa ambos campos",
-        backdrop: `#18212b`,
-    });
-    
-}; */
-
-/* function createAvatar(username) {
-    const url = `https://avatars.dicebear.com/api/bottts/${username}.svg`;
-
-    fetch(url)
-        
-        .then(response => {
-            return response.text();
-            
-        })
-        .then(svg => {
-            avatarImg = document.createElement("img");
-            avatarImg.setAttribute('class', 'user__img w-25 me-3');
-            avatarImg.setAttribute("src", `data:image/svg+xml,${encodeURIComponent(svg)}`);
-            avatarImg.setAttribute("alt", `Avatar for ${username}`);
-            avatarContainer.appendChild(avatarImg);
-        })
-        .catch(error => {
-            console.error("Error fetching avatar:", error);
-        });
-}
-createAvatar(userId); */
-
-/* Swal.fire({
-    title: 'Ingrese su nombre',
-    input: 'text',
-    inputAttributes: {
-        autocapitalize: 'off'
-    },
-    showCancelButton: true,
-    confirmButtonText: 'Aceptar',
-    showLoaderOnConfirm: true,
-    preConfirm: (name) => {
-        return fetch(`https://avatars.dicebear.com/api/bottts/${name}.svg`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .catch(error => {
-                console.error('Error fetching avatar:', error);
-                Swal.showValidationMessage(`No se pudo cargar el avatar`);
-            });
-    },
-    allowOutsideClick: () => !Swal.isLoading(),
-    html: '<img id="avatar-img" class="user__img w-25 me-3" />',
-    didRender: () => {
-        const avatarImg = document.getElementById('avatar-img');
-        const username = Swal.getInput().value;
-        const url = `https://avatars.dicebear.com/api/bottts/${username}.svg`;
-        avatarImg.src = `data:image/svg+xml,${encodeURIComponent(url)}`;
-    }
-}); */
-
-/* const container = document.getElementById("avatar-container");
-let avatarList;
-//localStorage.removeItem('userId');
-function listarAvatar(username) {
-    const categories = ["bottts"];
-    const url = `https://avatars.dicebear.com/api/bottts/${username}.svg`;
-
-    fetch(url)
-
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            console.log(response);
-            console.log(response);
-            return response.text();
-
-        })
-        .then(categories => {
-            categories.forEach(category => {
-                for (let i = 0; i < 100; i++) {
-                    const username = `${category}-${i}`;
-                    const url = `https://avatars.dicebear.com/api/${categories}/${username}.svg`;
-                    avatarList = document.createElement("img");
-                    avatarList.setAttribute('class', 'user__img me-3');
-                    avatarList.setAttribute("src", url);
-                    avatarList.setAttribute("alt", `Avatar for ${username}`);
-                    container.appendChild(avatarList);
-                }
-            });
-        })
-        .catch(error => {
-            console.error("Error fetching avatar:", error);
-        });
-} */
-
-/* const containerAvatar = document.createElement('<div id="container-avatar"></div>');
-const innerAvatar = document.querySelector('#container-avatar');
- */
-
-/* swal({
-    title: "Desea abandonar la partida?",
-    text: "Si abandona la partida perdera el progreso!",
-    icon: "question ",
-    buttons: true,
-    dangerMode: true,
-  })
-  .then((willDelete) => {
-    if (willDelete) {
-      swal("Poof! Your imaginary file has been deleted!", {
-        icon: "success",
-      });
-    } else {
-      swal("Your imaginary file is safe!");
-    }
-});
- */
-
-//const username = 'asd';
-//createAvatar(userId);
-/* let maxScore = JSON.parse(localStorage.getItem('maxScore')) || {score: 0, category: ''}; */
 function showStatistics() {
   if (!maxScoreData) {
     Swal.fire({
@@ -663,41 +522,6 @@ helpMobile.addEventListener("click", function () {
   showHelp();
 });
 
-/* statistics.addEventListener("click", function () {
-
-    Swal.fire({
-        background:"#C9FFA5",
-        title:"MEJOR PUNTUACIÓN",
-        html: 
-        `<strong>El mejor puntaje es ${maxScoreData.score} en la categoría ${maxScoreData.category}</strong>`,
-        showCloseButton: true,
-        showConfirmButton: false,
-        showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-        },
-        hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-        }
-    });
-});
-
-help.addEventListener("click", function () {
-
-    Swal.fire({
-        //background:"#C9FFA5",
-        title:"CONTACTANOS",
-        text:`Hola ${name}, si necesitas ayuda o tienes alguna sugerencia contactanos a twfa.luca@gmail.com y te responderemos a la brevedad.`,
-        showCloseButton: true,
-        showConfirmButton: false,
-        showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-        },
-        hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-        }
-    });
-}); */
-
 let nameNav = localStorage.getItem("Alias");
 let userId;
 let avatarImg;
@@ -706,11 +530,11 @@ const changeAvatar = document.querySelector(".btn__avatar");
 const nameUser = document.querySelector("#nombre-user");
 
 nameUser.innerHTML = `
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-emoji-smile-fill mt-2 text-warning" viewBox="0 0 20 20">
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-emoji-smile-fill mt-2 text-warning" viewBox="0 0 20 20">
   <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zM4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z"/>
-</svg>
+  </svg>
 
-<p class="text-warning">Hola ${nameNav} !</p>
+  <p class="text-warning">Hola ${nameNav} !</p>
 `;
 
 export function generateUserId() {
@@ -726,9 +550,7 @@ export function generateUserId() {
 generateUserId();
 
 async function createAvatar(username) {
-  const url = `https://api.dicebear.com/7.x/bottts/svg?seed=${username}`;
-  // const url = `https://api.dicebear.com/7.x/bottts/svg?seed=Felix`;
-  // const url = `https://avatars.dicebear.com/api/bottts/${username}.svg`;
+  const url = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${username}`;
 
   try {
     const response = await fetch(url);
@@ -760,7 +582,6 @@ function selectAvatar() {
 changeAvatar.addEventListener("click", function () {
   selectAvatar();
 });
-/* createAvatar(username); */
 
 // iniciar la prueba al cargar la página
 
